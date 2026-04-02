@@ -11,6 +11,12 @@ export enum MessageType {
   DISCONNECT = 'disconnect',
   RECONNECT = 'reconnect',
   
+  // 认证相关
+  AUTH_LOGIN = 'auth_login',
+  AUTH_REGISTER = 'auth_register',
+  AUTH_LOGOUT = 'auth_logout',
+  AUTH_TOKEN = 'auth_token',
+  
   // 游戏相关
   GAME_ACTION = 'game_action',
   GAME_STATE = 'game_state',

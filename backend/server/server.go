@@ -15,6 +15,10 @@ type MessageType string
 const (
 	MsgConnect      MessageType = "connect"
 	MsgDisconnect   MessageType = "disconnect"
+	MsgAuthLogin    MessageType = "auth_login"
+	MsgAuthRegister MessageType = "auth_register"
+	MsgAuthLogout   MessageType = "auth_logout"
+	MsgAuthToken    MessageType = "auth_token"
 	MsgGameAction   MessageType = "game_action"
 	MsgGameState    MessageType = "game_state"
 	MsgGameEvent    MessageType = "game_event"
@@ -50,6 +54,7 @@ type Server struct {
 	unregister chan *Client
 	mu       sync.RWMutex
 	upgrader websocket.Upgrader
+	auth     *AuthService
 }
 
 // 创建服务器
@@ -67,6 +72,7 @@ func NewServer(addr string) *Server {
 				return true // 允许所有来源 (生产环境应该限制)
 			},
 		},
+		auth: NewAuthService(),
 	}
 }
 
@@ -201,6 +207,12 @@ func (c *Client) readPump() {
 // 处理消息
 func (c *Client) handleMessage(msg NetworkMessage) {
 	switch msg.Type {
+	case MsgAuthLogin:
+		c.handleAuthLogin(msg.Data)
+	case MsgAuthRegister:
+		c.handleAuthRegister(msg.Data)
+	case MsgAuthLogout:
+		c.handleAuthLogout(msg.Data)
 	case MsgGameAction:
 		c.handleGameAction(msg.Data)
 	case MsgAudioRequest:
@@ -216,7 +228,90 @@ func (c *Client) handleMessage(msg NetworkMessage) {
 func (c *Client) handleGameAction(data interface{}) {
 	log.Printf("🎮 Game action: %v", data)
 	
-	// 广播游戏状态更新
+	// 处理认证登录
+func (c *Client) handleAuthLogin(data interface{}) {
+	log.Printf("🔐 Auth login request: %v", data)
+	
+	m, ok := data.(map[string]interface{})
+	if !ok {
+		c.sendErrorResponse("invalid request")
+		return
+	}
+	
+	username, _ := m["username"].(string)
+	password, _ := m["password"].(string)
+	
+	response := c.server.auth.Login(username, password)
+	
+	c.send <- NetworkMessage{
+		Type: MsgAuthLogin,
+		Data: response,
+		RequestID: getRequestID(data),
+	}
+	
+	if response.Success {
+		log.Printf("✅ Login success: %s", username)
+	} else {
+		log.Printf("❌ Login failed: %s", response.Message)
+	}
+}
+
+// 处理认证注册
+func (c *Client) handleAuthRegister(data interface{}) {
+	log.Printf("🔐 Auth register request: %v", data)
+	
+	m, ok := data.(map[string]interface{})
+	if !ok {
+		c.sendErrorResponse("invalid request")
+		return
+	}
+	
+	username, _ := m["username"].(string)
+	email, _ := m["email"].(string)
+	password, _ := m["password"].(string)
+	
+	response := c.server.auth.Register(username, email, password)
+	
+	c.send <- NetworkMessage{
+		Type: MsgAuthRegister,
+		Data: response,
+		RequestID: getRequestID(data),
+	}
+	
+	if response.Success {
+		log.Printf("✅ Register success: %s", username)
+	} else {
+		log.Printf("❌ Register failed: %s", response.Message)
+	}
+}
+
+// 处理认证登出
+func (c *Client) handleAuthLogout(data interface{}) {
+	log.Printf("🔐 Auth logout request: %v", data)
+	
+	m, ok := data.(map[string]interface{})
+	if !ok {
+		return
+	}
+	
+	token, _ := m["token"].(string)
+	if token != "" {
+		c.server.auth.Logout(token)
+	}
+}
+
+// 发送错误响应
+func (c *Client) sendErrorResponse(message string) {
+	c.send <- NetworkMessage{
+		Type: MsgError,
+		Data: map[string]interface{}{
+			"success": false,
+			"message": message,
+		},
+	}
+}
+
+// 广播游戏状态更新
 	c.server.Broadcast(NetworkMessage{
 		Type: MsgGameState,
 		Data: data,

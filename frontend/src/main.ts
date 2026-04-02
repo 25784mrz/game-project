@@ -8,6 +8,10 @@ import { ModuleLoader } from '@core/ModuleLoader';
 import { NetworkManager } from '@modules/network/NetworkManager';
 import { AudioController } from '@modules/audio/AudioController';
 import { createGameModule } from '@modules/game/GameModule';
+import { createAuthModule } from '@modules/auth/AuthModule';
+import { createMainMenuModule } from '@modules/mainmenu/MainMenuModule';
+
+export type Screen = 'auth' | 'main' | 'game';
 
 export class Application {
   private static instance: Application;
@@ -16,7 +20,15 @@ export class Application {
   private moduleLoader: ModuleLoader;
   private network: NetworkManager;
   private audio: AudioController;
+  
+  // 模块实例
+  private authModule: any = null;
+  private mainMenuModule: any = null;
   private gameModule: any = null;
+  
+  // 当前屏幕
+  private currentScreen: Screen = 'auth';
+  private container: HTMLElement | null = null;
   private isInitialized: boolean = false;
 
   private constructor() {
@@ -37,13 +49,27 @@ export class Application {
   /**
    * 初始化应用
    */
-  async initialize(config?: { serverUrl?: string }): Promise<void> {
+  async initialize(config?: { serverUrl?: string; containerId?: string }): Promise<void> {
     if (this.isInitialized) {
       console.log('[App] Already initialized');
       return;
     }
 
     console.log('[App] Initializing...');
+
+    // 设置容器
+    const containerId = config?.containerId || 'app';
+    this.container = document.getElementById(containerId);
+    if (!this.container) {
+      // 创建容器
+      this.container = document.createElement('div');
+      this.container.id = 'app';
+      this.container.style.width = '100%';
+      this.container.style.height = '100%';
+      document.body.appendChild(this.container);
+      document.body.style.margin = '0';
+      document.body.style.overflow = 'hidden';
+    }
 
     // 注册模块
     this.registerModules();
@@ -63,9 +89,15 @@ export class Application {
     // 加载自动模块
     await this.moduleLoader.loadAutoModules();
 
+    // 绑定导航事件
+    this.bindNavigation();
+
     this.isInitialized = true;
     this.eventSystem.emit('app:initialized');
     console.log('[App] Initialization complete');
+
+    // 显示认证界面
+    this.navigateTo('auth');
   }
 
   /**
@@ -73,6 +105,18 @@ export class Application {
    */
   private registerModules(): void {
     this.moduleLoader.registerAll([
+      {
+        name: 'auth',
+        path: '@modules/auth/AuthModule',
+        dependencies: ['network'],
+        autoLoad: false
+      },
+      {
+        name: 'mainmenu',
+        path: '@modules/mainmenu/MainMenuModule',
+        dependencies: ['network', 'audio'],
+        autoLoad: false
+      },
       {
         name: 'game',
         path: '@modules/game/GameModule',
@@ -111,21 +155,120 @@ export class Application {
   }
 
   /**
-   * 启动游戏模块
+   * 绑定导航事件
    */
-  startGame(): void {
+  private bindNavigation(): void {
+    this.eventSystem.on('app:navigate', (screen: Screen) => {
+      this.navigateTo(screen);
+    });
+  }
+
+  /**
+   * 导航到指定屏幕
+   */
+  navigateTo(screen: Screen): void {
+    console.log('[App] Navigate to:', screen);
+
+    // 清理当前屏幕
+    this.cleanupCurrentScreen();
+
+    this.currentScreen = screen;
+
+    switch (screen) {
+      case 'auth':
+        this.showAuthScreen();
+        break;
+      case 'main':
+        this.showMainMenuScreen();
+        break;
+      case 'game':
+        this.showGameScreen();
+        break;
+    }
+
+    this.eventSystem.emit('app:screen changed', screen);
+  }
+
+  private cleanupCurrentScreen(): void {
+    if (this.authModule) {
+      this.authModule.destroy();
+      this.authModule = null;
+    }
+    if (this.mainMenuModule) {
+      this.mainMenuModule.destroy();
+      this.mainMenuModule = null;
+    }
     if (this.gameModule) {
-      console.log('[App] Game already started');
-      return;
+      this.stopGame();
+    }
+
+    if (this.container) {
+      this.container.innerHTML = '';
+    }
+  }
+
+  private async showAuthScreen(): Promise<void> {
+    if (!this.moduleLoader.isLoaded('auth')) {
+      await this.moduleLoader.load('auth');
+    }
+
+    this.authModule = createAuthModule();
+    this.authModule.start();
+    
+    if (this.container) {
+      this.authModule.view.mount(this.container);
+    }
+    
+    console.log('[App] Auth screen shown');
+  }
+
+  private async showMainMenuScreen(): Promise<void> {
+    if (!this.moduleLoader.isLoaded('mainmenu')) {
+      await this.moduleLoader.load('mainmenu');
+    }
+
+    this.mainMenuModule = createMainMenuModule();
+    this.mainMenuModule.start();
+    
+    if (this.container) {
+      this.mainMenuModule.view.mount(this.container);
+    }
+
+    // 更新玩家信息
+    if (this.authModule) {
+      const username = this.authModule.controller.getUsername();
+      if (username) {
+        this.mainMenuModule.updatePlayerInfo(username, 1);
+      }
+    }
+    
+    console.log('[App] Main menu screen shown');
+  }
+
+  private async showGameScreen(): Promise<void> {
+    if (!this.moduleLoader.isLoaded('game')) {
+      await this.moduleLoader.load('game');
     }
 
     this.gameModule = createGameModule();
     this.gameModule.start();
-    console.log('[App] Game started');
+    
+    if (this.container) {
+      this.gameModule.view.mount(this.container);
+    }
+    
+    console.log('[App] Game screen shown');
   }
 
   /**
-   * 停止游戏模块
+   * 启动游戏
+   */
+  startGame(): void {
+    this.navigateTo('game');
+  }
+
+  /**
+   * 停止游戏
    */
   stopGame(): void {
     if (this.gameModule) {
@@ -133,6 +276,13 @@ export class Application {
       this.gameModule = null;
       console.log('[App] Game stopped');
     }
+  }
+
+  /**
+   * 获取当前屏幕
+   */
+  getCurrentScreen(): Screen {
+    return this.currentScreen;
   }
 
   /**
@@ -148,7 +298,7 @@ export class Application {
   async destroy(): Promise<void> {
     console.log('[App] Destroying...');
 
-    this.stopGame();
+    this.cleanupCurrentScreen();
     
     await this.moduleLoader.unloadAll();
     this.resourceManager.clearAll();
@@ -170,7 +320,7 @@ export class Application {
 
   try {
     await app.initialize();
-    console.log('[App] Ready. Call app.startGame() to start the game.');
+    console.log('[App] Ready.');
   } catch (err) {
     console.error('[App] Initialization failed:', err);
   }
