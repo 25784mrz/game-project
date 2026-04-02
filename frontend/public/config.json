@@ -1,0 +1,32 @@
+{
+  "gameName": "My Game",
+  "version": "1.0.0",
+  "server": {
+    "url": "ws://localhost:8080/ws",
+    "reconnectAttempts": 5,
+    "reconnectDelay": 1000
+  },
+  "audio": {
+    "enabled": true,
+    "language": "zh-CN",
+    "volume": 0.8,
+    "voiceCommands": true
+  },
+  "graphics": {
+    "width": 800,
+    "height": 600,
+    "fullscreen": false,
+    "vsync": true
+  },
+  "resources": {
+    "preload": [
+      "config",
+      "bgm",
+      "click"
+    ]
+  },
+  "modules": {
+    "autoLoad": ["network", "audio"],
+    "lazyLoad": ["game", "chat", "friends"]
+  }
+}
