@@ -30,7 +30,10 @@
             "settings/project.json",
             "scenes/scene.scene",
             "resource-main",
-            "resource-main/loading.jpg"
+            "resource-main/loading.jpg",
+            "scripts/scenes",
+            "scripts/scenes/BootController.ts",
+            "scripts/scenes/MainMenuController.ts"
         ]
     }
 }

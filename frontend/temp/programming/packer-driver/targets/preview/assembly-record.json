@@ -829,6 +829,20 @@
         "__unresolved_20": {
           "resolved": {
             "type": "chunk",
+            "id": "520ead7bb31708f7c7a96aad6bec8d861541b30c"
+          },
+          "messages": []
+        },
+        "__unresolved_21": {
+          "resolved": {
+            "type": "chunk",
+            "id": "55f15fed30d46c8823ed2c889b917e5ee06495a0"
+          },
+          "messages": []
+        },
+        "__unresolved_22": {
+          "resolved": {
+            "type": "chunk",
             "id": "4f8a9511cdd871451a87573b565f6736ef08d590"
           },
           "messages": []
@@ -883,7 +897,139 @@
           "messages": []
         }
       },
-      "timestamp": 1775205285325
+      "timestamp": 1775207929793
+    },
+    "520ead7bb31708f7c7a96aad6bec8d861541b30c": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "chunk",
+            "id": "6a5019a719a9014c047e67aa1cf34453ab8392ce"
+          },
+          "messages": []
+        },
+        "__unresolved_1": {
+          "resolved": {
+            "type": "chunk",
+            "id": "059bda8f9d9fcb6ded9fcb57ba265f2a71fd814b"
+          },
+          "messages": []
+        },
+        "__unresolved_2": {
+          "resolved": {
+            "type": "chunk",
+            "id": "4361fe0db2288fbe86ebba39226d2761a71abb68"
+          },
+          "messages": []
+        },
+        "__unresolved_3": {
+          "resolved": {
+            "type": "chunk",
+            "id": "5e6777698c316ff8a27fe9e3ad24bfc5d427bc2e"
+          },
+          "messages": []
+        },
+        "__unresolved_4": {
+          "resolved": {
+            "type": "chunk",
+            "id": "95f76dba6c97b8b260ce816b18b04999543a2c11"
+          },
+          "messages": []
+        },
+        "__unresolved_5": {
+          "resolved": {
+            "type": "chunk",
+            "id": "71bd39e98dcf2f632d91ef4ec069a911b64a79c7"
+          },
+          "messages": []
+        },
+        "__unresolved_6": {
+          "resolved": {
+            "type": "chunk",
+            "id": "bf9e267217d5ad48fa1b7fb079212db673d71166"
+          },
+          "messages": []
+        },
+        "__unresolved_7": {
+          "resolved": {
+            "type": "chunk",
+            "id": "40e9d034f0d4aa4abb99931acee6eeb8e4a7b701"
+          },
+          "messages": []
+        },
+        "__unresolved_8": {
+          "resolved": {
+            "type": "error",
+            "text": "Error: 以 file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/BootController.ts 为起点找不到模块 \"../../utils/TweenUtils\""
+          },
+          "messages": [
+            {
+              "level": "warn",
+              "text": "你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。"
+            }
+          ]
+        },
+        "cc": {
+          "resolved": {
+            "type": "chunk",
+            "id": "93ba276ea7b26ffcdc433fab14afc1ed6f05647b"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1775207929838
+    },
+    "55f15fed30d46c8823ed2c889b917e5ee06495a0": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "chunk",
+            "id": "6a5019a719a9014c047e67aa1cf34453ab8392ce"
+          },
+          "messages": []
+        },
+        "__unresolved_1": {
+          "resolved": {
+            "type": "chunk",
+            "id": "059bda8f9d9fcb6ded9fcb57ba265f2a71fd814b"
+          },
+          "messages": []
+        },
+        "__unresolved_2": {
+          "resolved": {
+            "type": "chunk",
+            "id": "bf9e267217d5ad48fa1b7fb079212db673d71166"
+          },
+          "messages": []
+        },
+        "__unresolved_3": {
+          "resolved": {
+            "type": "chunk",
+            "id": "b782a6f75f82d4511d3ec1e13c837cd633d04f4a"
+          },
+          "messages": []
+        },
+        "__unresolved_4": {
+          "resolved": {
+            "type": "error",
+            "text": "Error: 以 file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/MainMenuController.ts 为起点找不到模块 \"../../utils/TweenUtils\""
+          },
+          "messages": [
+            {
+              "level": "warn",
+              "text": "你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。"
+            }
+          ]
+        },
+        "cc": {
+          "resolved": {
+            "type": "chunk",
+            "id": "93ba276ea7b26ffcdc433fab14afc1ed6f05647b"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1775207929869
     }
   },
   "entries": {
@@ -909,6 +1055,8 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/gameplay/GameplayController.ts": "9d47958fa431ac60c63c3d31d4d2da83f3db9163",
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/GameMainMenuBuilder.ts": "b782a6f75f82d4511d3ec1e13c837cd633d04f4a",
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/MainMenuController.ts": "8b78de6e4839bcc9c425714fcd3f3e1194822701",
+    "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/BootController.ts": "520ead7bb31708f7c7a96aad6bec8d861541b30c",
+    "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/MainMenuController.ts": "55f15fed30d46c8823ed2c889b917e5ee06495a0",
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/utils/TweenUtils.ts": "4f8a9511cdd871451a87573b565f6736ef08d590"
   }
 }
