@@ -19,5 +19,9 @@
     "eslint": "^8.55.0",
     "@typescript-eslint/parser": "^6.13.0",
     "@typescript-eslint/eslint-plugin": "^6.13.0"
-  }
+  },
+  "creator": {
+    "version": "3.8.8"
+  },
+  "uuid": "702fa3e5-5253-47d9-b907-d068a5a19078"
 }
