@@ -1,8 +1,0 @@
-# Game Scene
-# 游戏场景 - 实际游戏玩法
-
-# 在 Cocos Creator 中创建此场景:
-# 1. 右键 assets/scenes → 创建 → Scene
-# 2. 命名为 game
-# 3. 添加玩家、敌人、地面等游戏对象
-# 4. 添加 GameplayController 和 AudioController 组件

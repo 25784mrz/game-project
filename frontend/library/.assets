@@ -1,6 +1,36 @@
 {
     "version": "1.0.1",
     "data": {
-        "paths": []
+        "paths": [
+            "scenes",
+            "scripts",
+            "settings",
+            "scripts/components",
+            "scripts/core",
+            "scripts/modules",
+            "scripts/utils",
+            "scripts/modules/auth",
+            "scripts/modules/gameplay",
+            "scripts/modules/mainmenu",
+            "scripts/components/AudioController.ts",
+            "scripts/components/PlayerController.ts",
+            "scripts/core/EventSystem.ts",
+            "scripts/core/GameManager.ts",
+            "scripts/core/InputManager.ts",
+            "scripts/core/NetworkManager.ts",
+            "scripts/core/ResourceManager.ts",
+            "scripts/core/SceneManager.ts",
+            "scripts/core/UIManager.ts",
+            "scripts/utils/TweenUtils.ts",
+            "scripts/modules/auth/AuthController.ts",
+            "scripts/modules/auth/LoginUIBuilder.ts",
+            "scripts/modules/gameplay/GameplayController.ts",
+            "scripts/modules/mainmenu/GameMainMenuBuilder.ts",
+            "scripts/modules/mainmenu/MainMenuController.ts",
+            "settings/project.json",
+            "scenes/scene.scene",
+            "resource-main",
+            "resource-main/loading.jpg"
+        ]
     }
 }

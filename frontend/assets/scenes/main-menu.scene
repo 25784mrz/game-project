@@ -1,8 +1,0 @@
-# Main Menu Scene
-# 主菜单场景 - 玩家选择开始游戏、设置等
-
-# 在 Cocos Creator 中创建此场景:
-# 1. 右键 assets/scenes → 创建 → Scene
-# 2. 命名为 main-menu
-# 3. 添加背景、标题、按钮等 UI
-# 4. 添加 MainMenuController 和 AudioController 组件
