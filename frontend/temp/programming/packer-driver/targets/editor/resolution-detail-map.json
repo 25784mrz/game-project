@@ -1,1 +1,22 @@
-{}
+{
+  "./chunks/8b/8b78de6e4839bcc9c425714fcd3f3e1194822701.js": {
+    "__unresolved_1": {
+      "error": "Error: 以 file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/MainMenuController.ts 为起点找不到模块 \"../core/GameManager\"",
+      "messages": [
+        {
+          "level": "warn",
+          "text": "你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。"
+        }
+      ]
+    },
+    "__unresolved_2": {
+      "error": "Error: 以 file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/MainMenuController.ts 为起点找不到模块 \"../components/AudioController\"",
+      "messages": [
+        {
+          "level": "warn",
+          "text": "你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。"
+        }
+      ]
+    }
+  }
+}

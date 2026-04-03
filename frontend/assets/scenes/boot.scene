@@ -1,8 +1,0 @@
-# Boot Scene
-# 启动场景 - 资源预加载和初始化
-
-# 在 Cocos Creator 中创建此场景:
-# 1. 右键 assets/scenes → 创建 → Scene
-# 2. 命名为 boot
-# 3. 添加 Canvas、Camera、LoadingUI
-# 4. 添加 GameManager 和 SceneManager 组件
