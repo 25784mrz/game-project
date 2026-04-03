@@ -2,7 +2,8 @@
 
 ## 前置要求
 
-- **Cocos Creator 3.8+**
+- **Cocos Creator 3.8.8**（推荐）
+- 最低版本：3.8.0+
 - **TypeScript 5.0+**
 - **Node.js 16+** (用于后端)
 - **Go 1.19+** (用于后端)

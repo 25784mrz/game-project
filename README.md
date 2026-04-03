@@ -6,7 +6,7 @@
 
 ## 技术栈
 
-- **引擎**: Cocos Creator 3.8 (TypeScript)
+- **引擎**: Cocos Creator 3.8.8 (TypeScript)
 - **架构**: 组件化 + 场景管理
 - **通信**: WebSocket 双向通信
 - **发布平台**: Web、iOS、Android、小游戏、PC
