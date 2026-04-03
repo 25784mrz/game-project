@@ -2,42 +2,37 @@
 
 ## ✅ 已完成功能
 
-### 1. 主体框架搭建
-- [x] 前端 TypeScript 项目结构
-- [x] 后端 Go 项目结构
-- [x] 前后端通信协议定义
-- [x] 模块加载器 (分包模式)
-- [x] MVVC 架构实现
+### 1. Cocos Creator 框架搭建
+- [x] 项目结构重构 (assets 目录)
+- [x] Cocos Creator 配置文件
+- [x] 核心系统脚本
+- [x] 组件化架构
 
-### 2. 网络通信
-- [x] WebSocket 客户端 (前端)
-- [x] WebSocket 服务器 (后端)
-- [x] 消息类型定义
+### 2. 核心系统
+- [x] GameManager - 游戏状态管理
+- [x] SceneManager - 场景加载切换
+- [x] ResourceManager - 资源管理
+- [x] EventSystem - 事件总线
+- [x] NetworkManager - WebSocket 通信
+
+### 3. 功能模块
+- [x] AuthController - 登录/注册
+- [x] MainMenuController - 主菜单
+- [x] GameplayController - 游戏玩法
+- [x] AudioController - 音频管理
+
+### 4. 网络通信
+- [x] WebSocket 客户端
 - [x] 自动重连机制
-- [x] 消息队列 (断线缓存)
+- [x] 消息队列
 - [x] 请求 - 响应模式
+- [x] 心跳机制
 
-### 3. 语音控制
-- [x] 语音合成 (TTS)
-- [x] 语音识别 (STT)
-- [x] 语音命令处理
-- [x] 音频流播放
-- [x] 音效管理
-- [x] 音量控制
-
-### 4. 资源加载与释放
-- [x] 异步资源加载
-- [x] 引用计数管理
-- [x] 资源预加载
-- [x] 自动释放机制
-- [x] 多类型支持 (JSON/Image/Audio)
-
-### 5. 分包模块系统
-- [x] 模块注册
-- [x] 动态加载
-- [x] 依赖管理
-- [x] 模块卸载
-- [x] 游戏模块示例
+### 5. 文档
+- [x] README.md - 项目说明
+- [x] SCENES.md - 场景搭建指南
+- [x] COMPONENTS.md - 组件开发指南
+- [x] CHECKLIST.md - 检查清单
 
 ## 📋 建议补充功能
 

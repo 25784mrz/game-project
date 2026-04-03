@@ -1,0 +1,88 @@
+{
+  "package_version": 2,
+  "engine_version": "3.8.0",
+  "id": "game-project",
+  "name": "Game Project",
+  "version": "1.0.0",
+  "description": "Cocos Creator 跨平台游戏框架",
+  "author": "Developer",
+  "dependencies": {},
+  "panels": {},
+  "scenes": [
+    {
+      "url": "db://assets/scenes/boot.scene",
+      "name": "boot"
+    },
+    {
+      "url": "db://assets/scenes/main-menu.scene",
+      "name": "main-menu"
+    },
+    {
+      "url": "db://assets/scenes/game.scene",
+      "name": "game"
+    }
+  ],
+  "startScene": "db://assets/scenes/boot.scene",
+  "platform": {
+    "web": {
+      "orientation": "auto",
+      "resolution": {
+        "policy": "show_all"
+      }
+    },
+    "android": {
+      "orientation": "landscape",
+      "packageName": "com.example.gameproject",
+      "apiLevel": 21,
+      "appBundle": false
+    },
+    "ios": {
+      "orientation": "landscape",
+      "bundleId": "com.example.gameproject",
+      "targetVersion": "11.0"
+    },
+    "wechatgame": {
+      "appid": "",
+      "orientation": "landscape",
+      "separateEngine": false
+    }
+  },
+  "groups": [
+    {
+      "name": "default",
+      "index": 0
+    },
+    {
+      "name": "player",
+      "index": 1
+    },
+    {
+      "name": "enemy",
+      "index": 2
+    },
+    {
+      "name": "ground",
+      "index": 3
+    },
+    {
+      "name": "ui",
+      "index": 4
+    }
+  ],
+  "collisionMatrix": {
+    "default": [],
+    "player": ["enemy", "ground"],
+    "enemy": ["player", "ground"],
+    "ground": ["player", "enemy"],
+    "ui": []
+  },
+  "physics": {
+    "gravity": {
+      "x": 0,
+      "y": -20,
+      "z": 0
+    },
+    "allowSleep": true,
+    "sleepThreshold": 0.1
+  }
+}
