@@ -13,20 +13,20 @@ import (
 type MessageType string
 
 const (
-	MsgConnect      MessageType = "connect"
-	MsgDisconnect   MessageType = "disconnect"
-	MsgAuthLogin    MessageType = "auth_login"
-	MsgAuthRegister MessageType = "auth_register"
-	MsgAuthLogout   MessageType = "auth_logout"
-	MsgAuthToken    MessageType = "auth_token"
-	MsgGameAction   MessageType = "game_action"
-	MsgGameState    MessageType = "game_state"
-	MsgGameEvent    MessageType = "game_event"
-	MsgAudioRequest MessageType = "audio_request"
-	MsgAudioResponse MessageType = "audio_response"
-	MsgResourceRequest MessageType = "resource_request"
+	MsgConnect          MessageType = "connect"
+	MsgDisconnect       MessageType = "disconnect"
+	MsgAuthLogin        MessageType = "auth_login"
+	MsgAuthRegister     MessageType = "auth_register"
+	MsgAuthLogout       MessageType = "auth_logout"
+	MsgAuthToken        MessageType = "auth_token"
+	MsgGameAction       MessageType = "game_action"
+	MsgGameState        MessageType = "game_state"
+	MsgGameEvent        MessageType = "game_event"
+	MsgAudioRequest     MessageType = "audio_request"
+	MsgAudioResponse    MessageType = "audio_response"
+	MsgResourceRequest  MessageType = "resource_request"
 	MsgResourceResponse MessageType = "resource_response"
-	MsgError        MessageType = "error"
+	MsgError            MessageType = "error"
 )
 
 // 网络消息
@@ -47,23 +47,23 @@ type Client struct {
 
 // 服务器
 type Server struct {
-	addr     string
-	clients  map[*Client]bool
-	broadcast chan NetworkMessage
-	register  chan *Client
+	addr       string
+	clients    map[*Client]bool
+	broadcast  chan NetworkMessage
+	register   chan *Client
 	unregister chan *Client
-	mu       sync.RWMutex
-	upgrader websocket.Upgrader
-	auth     *AuthService
+	mu         sync.RWMutex
+	upgrader   websocket.Upgrader
+	auth       *AuthService
 }
 
 // 创建服务器
 func NewServer(addr string) *Server {
 	return &Server{
-		addr: addr,
-		clients: make(map[*Client]bool),
-		broadcast: make(chan NetworkMessage, 256),
-		register: make(chan *Client),
+		addr:       addr,
+		clients:    make(map[*Client]bool),
+		broadcast:  make(chan NetworkMessage, 256),
+		register:   make(chan *Client),
 		unregister: make(chan *Client),
 		upgrader: websocket.Upgrader{
 			ReadBufferSize:  1024,
@@ -94,7 +94,7 @@ func (s *Server) run() {
 			client.send <- NetworkMessage{
 				Type: MsgConnect,
 				Data: map[string]interface{}{
-					"message": "Connected to game server",
+					"message":  "Connected to game server",
 					"clientId": getClientID(client),
 				},
 			}
@@ -133,8 +133,8 @@ func (s *Server) HandleWebSocket(w http.ResponseWriter, r *http.Request) {
 	}
 
 	client := &Client{
-		conn: conn,
-		send: make(chan NetworkMessage, 256),
+		conn:   conn,
+		send:   make(chan NetworkMessage, 256),
 		server: s,
 	}
 
@@ -152,7 +152,7 @@ func (s *Server) HandleHealth(w http.ResponseWriter, r *http.Request) {
 	s.mu.RUnlock()
 
 	response := map[string]interface{}{
-		"status": "ok",
+		"status":  "ok",
 		"clients": clientCount,
 	}
 
@@ -224,31 +224,27 @@ func (c *Client) handleMessage(msg NetworkMessage) {
 	}
 }
 
-// 处理游戏动作
-func (c *Client) handleGameAction(data interface{}) {
-	log.Printf("🎮 Game action: %v", data)
-	
-	// 处理认证登录
+// 处理认证登录
 func (c *Client) handleAuthLogin(data interface{}) {
 	log.Printf("🔐 Auth login request: %v", data)
-	
+
 	m, ok := data.(map[string]interface{})
 	if !ok {
 		c.sendErrorResponse("invalid request")
 		return
 	}
-	
+
 	username, _ := m["username"].(string)
 	password, _ := m["password"].(string)
-	
+
 	response := c.server.auth.Login(username, password)
-	
+
 	c.send <- NetworkMessage{
-		Type: MsgAuthLogin,
-		Data: response,
+		Type:      MsgAuthLogin,
+		Data:      response,
 		RequestID: getRequestID(data),
 	}
-	
+
 	if response.Success {
 		log.Printf("✅ Login success: %s", username)
 	} else {
@@ -259,25 +255,25 @@ func (c *Client) handleAuthLogin(data interface{}) {
 // 处理认证注册
 func (c *Client) handleAuthRegister(data interface{}) {
 	log.Printf("🔐 Auth register request: %v", data)
-	
+
 	m, ok := data.(map[string]interface{})
 	if !ok {
 		c.sendErrorResponse("invalid request")
 		return
 	}
-	
+
 	username, _ := m["username"].(string)
 	email, _ := m["email"].(string)
 	password, _ := m["password"].(string)
-	
+
 	response := c.server.auth.Register(username, email, password)
-	
+
 	c.send <- NetworkMessage{
-		Type: MsgAuthRegister,
-		Data: response,
+		Type:      MsgAuthRegister,
+		Data:      response,
 		RequestID: getRequestID(data),
 	}
-	
+
 	if response.Success {
 		log.Printf("✅ Register success: %s", username)
 	} else {
@@ -288,16 +284,27 @@ func (c *Client) handleAuthRegister(data interface{}) {
 // 处理认证登出
 func (c *Client) handleAuthLogout(data interface{}) {
 	log.Printf("🔐 Auth logout request: %v", data)
-	
+
 	m, ok := data.(map[string]interface{})
 	if !ok {
 		return
 	}
-	
+
 	token, _ := m["token"].(string)
 	if token != "" {
 		c.server.auth.Logout(token)
 	}
+}
+
+// 处理游戏动作
+func (c *Client) handleGameAction(data interface{}) {
+	log.Printf("🎮 Game action: %v", data)
+
+	// 广播游戏状态更新
+	c.server.Broadcast(NetworkMessage{
+		Type: MsgGameState,
+		Data: data,
+	})
 }
 
 // 发送错误响应
@@ -311,23 +318,16 @@ func (c *Client) sendErrorResponse(message string) {
 	}
 }
 
-// 广播游戏状态更新
-	c.server.Broadcast(NetworkMessage{
-		Type: MsgGameState,
-		Data: data,
-	})
-}
-
 // 处理语音请求
 func (c *Client) handleAudioRequest(data interface{}) {
 	log.Printf("🎤 Audio request: %v", data)
-	
+
 	// 这里可以集成语音识别服务
 	// 返回语音响应
 	c.send <- NetworkMessage{
 		Type: MsgAudioResponse,
 		Data: map[string]interface{}{
-			"status": "processed",
+			"status":  "processed",
 			"request": data,
 		},
 		RequestID: getRequestID(data),
@@ -337,12 +337,12 @@ func (c *Client) handleAudioRequest(data interface{}) {
 // 处理资源请求
 func (c *Client) handleResourceRequest(data interface{}) {
 	log.Printf("📦 Resource request: %v", data)
-	
+
 	// 返回资源信息
 	c.send <- NetworkMessage{
 		Type: MsgResourceResponse,
 		Data: map[string]interface{}{
-			"status": "ok",
+			"status":    "ok",
 			"resources": []string{"config.json", "bgm.mp3", "click.mp3"},
 		},
 		RequestID: getRequestID(data),

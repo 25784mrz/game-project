@@ -4,7 +4,7 @@
  */
 
 import { EventSystem } from '@core/EventSystem';
-import { NetworkManager, MessageType } from './NetworkManager';
+import { NetworkManager, MessageType } from '../network/NetworkManager';
 
 export interface VoiceConfig {
   language: string;

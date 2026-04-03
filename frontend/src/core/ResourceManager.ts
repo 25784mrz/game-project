@@ -77,8 +77,8 @@ export class ResourceManager {
           audio.onerror = reject;
         });
       default:
-        const res = await fetch(url);
-        return res.text();
+        const textRes = await fetch(url);
+        return textRes.text();
     }
   }
 

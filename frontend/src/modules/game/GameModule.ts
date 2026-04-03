@@ -199,8 +199,13 @@ export class GameViewModel extends ViewModel<GameModel, GameView> {
 // ==================== Controller ====================
 
 export class GameController extends Controller<GameModel, GameView, GameViewModel> {
+  private network: NetworkManager;
+  private audio: AudioController;
+
   constructor(model: GameModel, view: GameView, viewModel: GameViewModel) {
     super(model, view, viewModel);
+    this.network = NetworkManager.getInstance();
+    this.audio = AudioController.getInstance();
   }
 
   protected bindEvents(): void {

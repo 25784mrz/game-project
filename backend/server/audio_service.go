@@ -4,7 +4,6 @@ import (
 	"context"
 	"log"
 	"sync"
-	"time"
 )
 
 // AudioService 语音服务
@@ -126,9 +125,9 @@ func contains(text string, keywords ...string) bool {
 }
 
 func containsSubstring(text, substr string) bool {
-	return len(text) >= len(substr) && 
-		(text == substr || 
-		 findSubstring(text, substr))
+	return len(text) >= len(substr) &&
+		(text == substr ||
+			findSubstring(text, substr))
 }
 
 func findSubstring(text, substr string) bool {

@@ -254,7 +254,7 @@ func (as *AuthService) GuestLogin() *AuthResponse {
 	username := fmt.Sprintf("Guest_%d", as.guestCount)
 
 	user := &User{
-		ID:        f"guest_{as.guestCount}",
+		ID:        fmt.Sprintf("guest_%d", as.guestCount),
 		Username:  username,
 		Email:     "",
 		Password:  "",

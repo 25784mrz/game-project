@@ -372,8 +372,11 @@ export class MainMenuView extends View {
     // 音量设置
     const volumeSlider = this.getElement<HTMLInputElement>('#setting-volume');
     volumeSlider?.addEventListener('input', (e) => {
-      const volume = parseInt(e.target.value) / 100;
-      this.eventSystem.emit('main:volume change', volume);
+      const target = e.target as HTMLInputElement;
+      if (target) {
+        const volume = parseInt(target.value) / 100;
+        this.eventSystem.emit('main:volume change', volume);
+      }
     });
   }
 
@@ -445,7 +448,7 @@ export class MainMenuViewModel extends ViewModel<MainMenuModel, MainMenuView> {
     console.log('[MainMenuViewModel] Initialized');
     
     // 更新玩家信息
-    const username = this.eventSystem['eventSystem'] ? null : null; // 从 auth 模块获取
+    const username = null; // 从 auth 模块获取
     if (username) {
       this.model.setPlayerInfo(username, 1);
     }
