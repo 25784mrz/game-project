@@ -14,6 +14,8 @@
 - [x] ResourceManager - 资源管理
 - [x] EventSystem - 事件总线
 - [x] NetworkManager - WebSocket 通信
+- [x] InputManager - 输入管理
+- [x] UIManager - UI 管理
 
 ### 3. 功能模块
 - [x] AuthController - 登录/注册
