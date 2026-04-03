@@ -40,3 +40,10 @@ test.out
 
 # TypeScript
 *.tsbuildinfo
+
+# Cocos Creator
+frontend/library/
+frontend/temp/
+frontend/profiles/
+frontend/settings/v2/
+*.profile
