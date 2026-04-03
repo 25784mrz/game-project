@@ -2,7 +2,7 @@
  * 主菜单场景启动脚本
  */
 
-import { _decorator, Component, Node, find } from 'cc';
+import { _decorator, Component, Node, find, Label } from 'cc';
 import { GameManager, GameState } from '../core/GameManager';
 import { AudioController } from '../components/AudioController';
 import { GameMainMenuBuilder } from '../modules/mainmenu/GameMainMenuBuilder';
