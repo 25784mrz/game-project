@@ -135,6 +135,11 @@ export class PlayerController extends Component {
 - [x] 资源管理系统
 - [x] 场景管理
 - [x] 组件化架构
+- [x] 登录界面 UI（完整可运行）
+- [x] 游戏主菜单 UI（完整可运行）
+- [x] UI 自动生成器（LoginUIBuilder、GameMainMenuBuilder）
+- [x] 场景启动脚本（BootController、MainMenuController）
+- [x] 缓动动画工具（TweenUtils）
 
 ## 待实现功能
 
