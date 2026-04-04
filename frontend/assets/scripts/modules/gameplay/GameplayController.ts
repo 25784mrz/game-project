@@ -2,14 +2,14 @@
  * 游戏玩法模块 - 游戏场景主控制器
  */
 
-import { _decorator, Component, Node, Vec3, Quat, input, Input, EventKeyboard, KeyCode } from 'cc';
-import { GameManager, GameState } from '../../core/GameManager';
-import { AudioController } from '../../components/AudioController';
+import { _decorator, Component, Node, Vec3, input, Input, EventKeyboard, KeyCode } from 'cc';
+import { BaseController } from '../../core/BaseController';
+import { GameState } from '../../core/GameManager';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('GameplayController')
-export class GameplayController extends Component {
+export class GameplayController extends BaseController {
     @property(Node)
     playerNode: Node | null = null;
     
@@ -19,21 +19,15 @@ export class GameplayController extends Component {
     @property
     playerJumpForce: number = 10;
     
-    private gameManager: GameManager | null = null;
-    private audioController: AudioController | null = null;
-    
     private isGrounded: boolean = true;
-    private velocity: Vec3 = new Vec3();
-    private inputDirection: Vec3 = new Vec3();
+    private velocity: Vec3 = new Vec3(0, 0, 0);
+    private inputDirection: Vec3 = new Vec3(0, 0, 0);
     
     start() {
-        this.gameManager = GameManager.getInstance();
-        this.audioController = AudioController.getInstance();
+        this.log('[Gameplay] Started');
         
         this.registerInput();
-        this.gameManager?.changeState(GameState.GAME);
-        
-        console.log('[Gameplay] Started');
+        this.changeGameState(GameState.GAME);
     }
     
     update(deltaTime: number) {

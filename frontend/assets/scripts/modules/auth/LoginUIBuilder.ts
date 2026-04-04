@@ -23,11 +23,11 @@ export class LoginUIBuilder extends Component {
     buildLoginUI(): Node {
         // 创建根节点
         const rootNode = new Node('LoginUI');
-        const rootTransform = rootNode.addComponent(UITransform);
+        const rootTransform = rootNode.addComponent(UITransform) as UITransform;
         rootTransform.setContentSize(this.designWidth, this.designHeight);
         
         // 添加 Widget 保持全屏
-        const rootWidget = rootNode.addComponent(Widget);
+        const rootWidget = rootNode.addComponent(Widget) as Widget;
         rootWidget.isAlignLeft = true;
         rootWidget.isAlignRight = true;
         rootWidget.isAlignTop = true;
@@ -74,16 +74,16 @@ export class LoginUIBuilder extends Component {
         errorLabel.parent = formContainer;
         
         // 10. 添加 AuthController
-        const authController = rootNode.addComponent(AuthController);
+        const authController = rootNode.addComponent(AuthController) as AuthController;
         
         // 11. 绑定引用到 AuthController
         this.bindControllerReferences(authController, {
-            usernameInput: usernameInput.getComponent(EditBox),
-            passwordInput: passwordInput.getComponent(EditBox),
+            usernameInput: usernameInput.getComponent(EditBox) as EditBox,
+            passwordInput: passwordInput.getComponent(EditBox) as EditBox,
             loginButton,
             registerButton,
-            errorLabel: errorLabel.getComponent(Label),
-            titleLabel: title.getComponent(Label)
+            errorLabel: errorLabel.getComponent(Label) as Label,
+            titleLabel: title.getComponent(Label) as Label
         });
         
         console.log('[LoginUIBuilder] Login UI created successfully');
@@ -95,14 +95,14 @@ export class LoginUIBuilder extends Component {
      */
     private createBackground(): Node {
         const bgNode = new Node('Background');
-        const bgTransform = bgNode.addComponent(UITransform);
+        const bgTransform = bgNode.addComponent(UITransform) as UITransform;
         bgTransform.setContentSize(this.designWidth, this.designHeight);
         
-        const bgSprite = bgNode.addComponent(Sprite);
+        const bgSprite = bgNode.addComponent(Sprite) as Sprite;
         // TODO: 设置背景图片
         
         // 添加 Widget
-        const bgWidget = bgNode.addComponent(Widget);
+        const bgWidget = bgNode.addComponent(Widget) as Widget;
         bgWidget.isAlignLeft = true;
         bgWidget.isAlignRight = true;
         bgWidget.isAlignTop = true;
@@ -116,21 +116,21 @@ export class LoginUIBuilder extends Component {
      */
     private createTitle(): Node {
         const titleNode = new Node('Title');
-        const titleTransform = titleNode.addComponent(UITransform);
+        const titleTransform = titleNode.addComponent(UITransform) as UITransform;
         titleTransform.setContentSize(800, 120);
         
-        const titleLabel = titleNode.addComponent(Label);
+        const titleLabel = titleNode.addComponent(Label) as Label;
         titleLabel.string = '游戏登录';
         titleLabel.fontSize = 72;
-        titleLabel.fontWeight = Label.FontWeight.BOLD;
+        titleLabel.fontWeight = (Label as any).FontWeight.BOLD;
         titleLabel.color = new Color(255, 255, 255, 255);
-        titleLabel.horizontalAlign = Label.HorizontalAlign.CENTER;
+        titleLabel.horizontalAlign = (Label as any).HorizontalAlign.CENTER;
         
         // 位置：顶部居中
         titleNode.setPosition(new Vec3(0, this.designHeight / 2 - 200, 0));
         
         // 添加 Widget
-        const titleWidget = titleNode.addComponent(Widget);
+        const titleWidget = titleNode.addComponent(Widget) as Widget;
         titleWidget.isAlignTop = true;
         titleWidget.isAlignHorizontalCenter = true;
         titleWidget.top = 150;
@@ -143,24 +143,24 @@ export class LoginUIBuilder extends Component {
      */
     private createFormContainer(): Node {
         const containerNode = new Node('FormContainer');
-        const containerTransform = containerNode.addComponent(UITransform);
+        const containerTransform = containerNode.addComponent(UITransform) as UITransform;
         containerTransform.setContentSize(600, 500);
         
         // 添加 Layout 自动排版
-        const layout = containerNode.addComponent(Layout);
-        layout.type = Layout.Type.VERTICAL;
+        const layout = containerNode.addComponent(Layout) as Layout;
+        layout.type = (Layout as any).Type.VERTICAL;
         layout.spacingY = 30;
         layout.paddingTop = 50;
         layout.paddingBottom = 50;
         layout.paddingLeft = 50;
         layout.paddingRight = 50;
-        layout.resizeMode = Layout.ResizeMode.CONTAINER;
+        layout.resizeMode = (Layout as any).ResizeMode.CONTAINER;
         
         // 位置：屏幕居中
         containerNode.setPosition(new Vec3(0, 0, 0));
         
         // 添加 Widget
-        const containerWidget = containerNode.addComponent(Widget);
+        const containerWidget = containerNode.addComponent(Widget) as Widget;
         containerWidget.isAlignHorizontalCenter = true;
         containerWidget.isAlignVerticalCenter = true;
         
@@ -172,25 +172,25 @@ export class LoginUIBuilder extends Component {
      */
     private createUsernameInput(): Node {
         const inputNode = new Node('UsernameInput');
-        const inputTransform = inputNode.addComponent(UITransform);
+        const inputTransform = inputNode.addComponent(UITransform) as UITransform;
         inputTransform.setContentSize(500, 80);
         
         // 背景框
         const bgNode = new Node('Background');
         bgNode.parent = inputNode;
-        const bgTransform = bgNode.addComponent(UITransform);
+        const bgTransform = bgNode.addComponent(UITransform) as UITransform;
         bgTransform.setContentSize(500, 80);
-        const bgSprite = bgNode.addComponent(Sprite);
+        const bgSprite = bgNode.addComponent(Sprite) as Sprite;
         bgSprite.color = new Color(40, 40, 40, 200);
         
         // 输入框组件
-        const editBox = inputNode.addComponent(EditBox);
+        const editBox = inputNode.addComponent(EditBox) as EditBox;
         editBox.placeholder = '请输入用户名';
         editBox.string = '';
         editBox.fontSize = 32;
         editBox.fontColor = new Color(255, 255, 255, 255);
-        editBox.returnType = EditBox.KeyboardReturnType.DONE;
-        editBox.editingDidBegan = () => console.log('[LoginUI] Username editing began');
+        editBox.returnType = (EditBox as any).KeyboardReturnType.DONE;
+        (editBox as any).editingDidBegan = () => console.log('[LoginUI] Username editing began');
         
         return inputNode;
     }
@@ -200,25 +200,25 @@ export class LoginUIBuilder extends Component {
      */
     private createPasswordInput(): Node {
         const inputNode = new Node('PasswordInput');
-        const inputTransform = inputNode.addComponent(UITransform);
+        const inputTransform = inputNode.addComponent(UITransform) as UITransform;
         inputTransform.setContentSize(500, 80);
         
         // 背景框
         const bgNode = new Node('Background');
         bgNode.parent = inputNode;
-        const bgTransform = bgNode.addComponent(UITransform);
+        const bgTransform = bgNode.addComponent(UITransform) as UITransform;
         bgTransform.setContentSize(500, 80);
-        const bgSprite = bgNode.addComponent(Sprite);
+        const bgSprite = bgNode.addComponent(Sprite) as Sprite;
         bgSprite.color = new Color(40, 40, 40, 200);
         
         // 输入框组件
-        const editBox = inputNode.addComponent(EditBox);
+        const editBox = inputNode.addComponent(EditBox) as EditBox;
         editBox.placeholder = '请输入密码';
         editBox.string = '';
         editBox.fontSize = 32;
         editBox.fontColor = new Color(255, 255, 255, 255);
-        editBox.inputFlag = EditBox.InputFlag.PASSWORD;
-        editBox.returnType = EditBox.KeyboardReturnType.DONE;
+        editBox.inputFlag = (EditBox as any).InputFlag.PASSWORD;
+        editBox.returnType = (EditBox as any).KeyboardReturnType.DONE;
         
         return inputNode;
     }
@@ -228,35 +228,35 @@ export class LoginUIBuilder extends Component {
      */
     private createLoginButton(): Node {
         const buttonNode = new Node('LoginButton');
-        const buttonTransform = buttonNode.addComponent(UITransform);
+        const buttonTransform = buttonNode.addComponent(UITransform) as UITransform;
         buttonTransform.setContentSize(500, 90);
         
         // 背景
         const bgNode = new Node('Background');
         bgNode.parent = buttonNode;
-        const bgTransform = bgNode.addComponent(UITransform);
+        const bgTransform = bgNode.addComponent(UITransform) as UITransform;
         bgTransform.setContentSize(500, 90);
-        const bgSprite = bgNode.addComponent(Sprite);
+        const bgSprite = bgNode.addComponent(Sprite) as Sprite;
         bgSprite.color = new Color(65, 105, 225, 255); // 皇家蓝
         
         // 按钮组件
-        const button = buttonNode.addComponent(Button);
+        buttonNode.addComponent(Button);
         
         // 按钮文本
         const labelNode = new Node('Label');
         labelNode.parent = buttonNode;
-        const labelTransform = labelNode.addComponent(UITransform);
+        const labelTransform = labelNode.addComponent(UITransform) as UITransform;
         labelTransform.setContentSize(500, 90);
-        const label = labelNode.addComponent(Label);
+        const label = labelNode.addComponent(Label) as Label;
         label.string = '登 录';
         label.fontSize = 40;
-        label.fontWeight = Label.FontWeight.BOLD;
+        label.fontWeight = (Label as any).FontWeight.BOLD;
         label.color = new Color(255, 255, 255, 255);
-        label.horizontalAlign = Label.HorizontalAlign.CENTER;
-        label.verticalAlign = Label.VerticalAlign.CENTER;
+        label.horizontalAlign = (Label as any).HorizontalAlign.CENTER;
+        label.verticalAlign = (Label as any).VerticalAlign.CENTER;
         
         // 添加 Widget 保持文本居中
-        const labelWidget = labelNode.addComponent(Widget);
+        const labelWidget = labelNode.addComponent(Widget) as Widget;
         labelWidget.isAlignLeft = true;
         labelWidget.isAlignRight = true;
         labelWidget.isAlignTop = true;
@@ -270,35 +270,35 @@ export class LoginUIBuilder extends Component {
      */
     private createRegisterButton(): Node {
         const buttonNode = new Node('RegisterButton');
-        const buttonTransform = buttonNode.addComponent(UITransform);
+        const buttonTransform = buttonNode.addComponent(UITransform) as UITransform;
         buttonTransform.setContentSize(500, 90);
         
         // 背景
         const bgNode = new Node('Background');
         bgNode.parent = buttonNode;
-        const bgTransform = bgNode.addComponent(UITransform);
+        const bgTransform = bgNode.addComponent(UITransform) as UITransform;
         bgTransform.setContentSize(500, 90);
-        const bgSprite = bgNode.addComponent(Sprite);
+        const bgSprite = bgNode.addComponent(Sprite) as Sprite;
         bgSprite.color = new Color(46, 139, 87, 255); // 海洋绿
         
         // 按钮组件
-        const button = buttonNode.addComponent(Button);
+        buttonNode.addComponent(Button);
         
         // 按钮文本
         const labelNode = new Node('Label');
         labelNode.parent = buttonNode;
-        const labelTransform = labelNode.addComponent(UITransform);
+        const labelTransform = labelNode.addComponent(UITransform) as UITransform;
         labelTransform.setContentSize(500, 90);
-        const label = labelNode.addComponent(Label);
+        const label = labelNode.addComponent(Label) as Label;
         label.string = '注 册';
         label.fontSize = 40;
-        label.fontWeight = Label.FontWeight.BOLD;
+        label.fontWeight = (Label as any).FontWeight.BOLD;
         label.color = new Color(255, 255, 255, 255);
-        label.horizontalAlign = Label.HorizontalAlign.CENTER;
-        label.verticalAlign = Label.VerticalAlign.CENTER;
+        label.horizontalAlign = (Label as any).HorizontalAlign.CENTER;
+        label.verticalAlign = (Label as any).VerticalAlign.CENTER;
         
         // 添加 Widget
-        const labelWidget = labelNode.addComponent(Widget);
+        const labelWidget = labelNode.addComponent(Widget) as Widget;
         labelWidget.isAlignLeft = true;
         labelWidget.isAlignRight = true;
         labelWidget.isAlignTop = true;
@@ -312,14 +312,14 @@ export class LoginUIBuilder extends Component {
      */
     private createToggleLabel(): Node {
         const labelNode = new Node('ToggleLabel');
-        const labelTransform = labelNode.addComponent(UITransform);
+        const labelTransform = labelNode.addComponent(UITransform) as UITransform;
         labelTransform.setContentSize(400, 50);
         
-        const label = labelNode.addComponent(Label);
+        const label = labelNode.addComponent(Label) as Label;
         label.string = '没有账号？点击切换';
         label.fontSize = 28;
         label.color = new Color(200, 200, 200, 255);
-        label.horizontalAlign = Label.HorizontalAlign.CENTER;
+        label.horizontalAlign = (Label as any).HorizontalAlign.CENTER;
         
         return labelNode;
     }
@@ -329,14 +329,14 @@ export class LoginUIBuilder extends Component {
      */
     private createErrorLabel(): Node {
         const labelNode = new Node('ErrorLabel');
-        const labelTransform = labelNode.addComponent(UITransform);
+        const labelTransform = labelNode.addComponent(UITransform) as UITransform;
         labelTransform.setContentSize(500, 40);
         
-        const label = labelNode.addComponent(Label);
+        const label = labelNode.addComponent(Label) as Label;
         label.string = '';
         label.fontSize = 24;
         label.color = new Color(255, 69, 0, 255); // 红色
-        label.horizontalAlign = Label.HorizontalAlign.CENTER;
+        label.horizontalAlign = (Label as any).HorizontalAlign.CENTER;
         
         // 默认隐藏
         labelNode.active = false;

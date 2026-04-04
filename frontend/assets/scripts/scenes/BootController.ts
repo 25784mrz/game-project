@@ -3,8 +3,9 @@
  * 负责初始化游戏和预加载资源
  */
 
-import { _decorator, Component, ProgressBar, Label, Node } from 'cc';
-import { GameManager, GameState } from '../core/GameManager';
+import { _decorator, Component, ProgressBar, Label, Node, director } from 'cc';
+import { BaseController } from '../core/BaseController';
+import { GameState } from '../core/GameManager';
 import { SceneManager } from '../core/SceneManager';
 import { ResourceManager } from '../core/ResourceManager';
 import { EventSystem } from '../core/EventSystem';
@@ -12,12 +13,12 @@ import { UIManager } from '../core/UIManager';
 import { InputManager } from '../core/InputManager';
 import { AudioController } from '../components/AudioController';
 import { LoginUIBuilder } from '../modules/auth/LoginUIBuilder';
-import { TweenUtils } from '../../utils/TweenUtils';
+import { TweenUtils } from '../utils/TweenUtils';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('BootController')
-export class BootController extends Component {
+export class BootController extends BaseController {
     @property(ProgressBar)
     progressBar: ProgressBar | null = null;
     
@@ -27,20 +28,14 @@ export class BootController extends Component {
     @property(Node)
     loadingUI: Node | null = null;
     
-    private gameManager: GameManager | null = null;
     private sceneManager: SceneManager | null = null;
-    private resourceManager: ResourceManager | null = null;
     
     start() {
-        // 获取管理器实例
-        this.gameManager = GameManager.getInstance();
+        this.log('[Boot] Starting');
+        
         this.sceneManager = SceneManager.getInstance();
-        this.resourceManager = ResourceManager.getInstance();
         
-        // 初始化全局管理器
         this.initManagers();
-        
-        // 开始加载流程
         this.startLoading();
     }
     
@@ -53,15 +48,15 @@ export class BootController extends Component {
         // 创建持久化节点
         const uiManagerNode = new Node('UIManager');
         uiManagerNode.addComponent(UIManager);
-        game.addPersistRootNode(uiManagerNode);
+        director.addPersistRootNode(uiManagerNode);
         
         const inputManagerNode = new Node('InputManager');
         inputManagerNode.addComponent(InputManager);
-        game.addPersistRootNode(inputManagerNode);
+        director.addPersistRootNode(inputManagerNode);
         
         const audioManagerNode = new Node('AudioManager');
         audioManagerNode.addComponent(AudioController);
-        game.addPersistRootNode(audioManagerNode);
+        director.addPersistRootNode(audioManagerNode);
         
         console.log('[Boot] Managers initialized');
     }
@@ -70,7 +65,7 @@ export class BootController extends Component {
      * 开始加载流程
      */
     private async startLoading(): Promise<void> {
-        console.log('[Boot] Starting loading...');
+        this.log('[Boot] Starting loading...');
         
         // 预加载资源列表
         const resources = [
@@ -87,12 +82,12 @@ export class BootController extends Component {
         // 逐个加载资源
         for (const resource of resources) {
             try {
-                await this.resourceManager?.load(resource.path, resource.type);
+                await this.loadResource(resource.path, resource.type);
                 loadedCount++;
                 this.updateProgress(loadedCount / totalCount);
-                console.log(`[Boot] Loaded: ${resource.path}`);
+                this.log(`[Boot] Loaded: ${resource.path}`);
             } catch (error) {
-                console.warn(`[Boot] Failed to load ${resource.path}:`, error);
+                this.warn(`[Boot] Failed to load ${resource.path}:`, error);
             }
         }
         
@@ -129,13 +124,6 @@ export class BootController extends Component {
     }
     
     /**
-     * 延迟函数
-     */
-    private delay(ms: number): Promise<void> {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    
-    /**
      * 显示登录界面（可选）
      */
     private showLoginUI(): void {
@@ -150,9 +138,9 @@ export class BootController extends Component {
         
         // 创建并显示登录 UI
         const loginUINode = new Node('LoginUI');
-        loginUINode.parent = this.node;
+        loginUINode.parent = this.loadingUI;
         
-        const builder = loginUINode.addComponent(LoginUIBuilder);
+        const builder = loginUINode.addComponent(LoginUIBuilder) as LoginUIBuilder;
         const uiRoot = builder.buildLoginUI();
         uiRoot.parent = loginUINode;
         

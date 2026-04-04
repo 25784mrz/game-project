@@ -30,7 +30,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 3000,
+    port: 3001,
     hot: true,
     proxy: {
       '/ws': {
@@ -38,6 +38,19 @@ module.exports = {
         ws: true,
       },
     },
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
   },
   devtool: 'source-map',
+  performance: {
+    hints: false,
+  },
+  stats: {
+    children: false,
+    modules: false,
+  },
 };

@@ -2,37 +2,45 @@
  * 主菜单场景启动脚本
  */
 
-import { _decorator, Component, Node, find, Label } from 'cc';
-import { GameManager, GameState } from '../core/GameManager';
-import { AudioController } from '../components/AudioController';
+import { _decorator, Node, find, Label } from 'cc';
+import { BaseController } from '../core/BaseController';
+import { GameState } from '../core/GameManager';
 import { GameMainMenuBuilder } from '../modules/mainmenu/GameMainMenuBuilder';
-import { TweenUtils } from '../../utils/TweenUtils';
+import { TweenUtils } from '../utils/TweenUtils';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('MainMenuController')
-export class MainMenuController extends Component {
+export class MainMenuController extends BaseController {
     @property(Node)
     mainMenuUI: Node | null = null;
     
-    private gameManager: GameManager | null = null;
-    private audioController: AudioController | null = null;
+    @property(Node)
+    playButton: Node | null = null;
+    
+    @property(Node)
+    settingsButton: Node | null = null;
+    
+    @property(Node)
+    shopButton: Node | null = null;
+    
+    @property(Node)
+    logoutButton: Node | null = null;
+    
+    @property(Label)
+    playerNameLabel: Label | null = null;
+    
+    @property(Label)
+    playerLevelLabel: Label | null = null;
     
     start() {
-        console.log('[MainMenu] Scene started');
+        this.log('[MainMenu] Scene started');
         
-        this.gameManager = GameManager.getInstance();
-        this.audioController = AudioController.getInstance();
-        
-        // 检查是否需要创建主菜单 UI
         if (!this.mainMenuUI) {
             this.createMainMenuUI();
         }
         
-        // 更新玩家信息
         this.updatePlayerInfo();
-        
-        // 播放背景音乐
         this.playBGM();
     }
     
@@ -40,62 +48,55 @@ export class MainMenuController extends Component {
      * 创建主菜单 UI
      */
     private createMainMenuUI(): void {
-        const uiNode = new Node('MainMenuUI');
+        const uiNode = new Node();
+        uiNode.name = 'MainMenuUI';
         uiNode.parent = this.node;
         
-        const builder = uiNode.addComponent(GameMainMenuBuilder);
+        const builder = new GameMainMenuBuilder();
         const uiRoot = builder.buildMainMenu();
         uiRoot.parent = uiNode;
         
         this.mainMenuUI = uiNode;
         
-        // 播放入场动画
-        builder.playEnterAnimation(uiRoot);
-        
-        console.log('[MainMenu] Main menu UI created');
+        this.log('[MainMenu] Main menu UI created');
     }
     
     /**
      * 更新玩家信息
      */
     private updatePlayerInfo(): void {
-        const playerData = this.gameManager?.getGameData('player');
+        const playerData = this.getGameData('player');
         
         if (playerData) {
-            console.log('[MainMenu] Player data:', playerData);
+            this.log('[MainMenu] Player data:', playerData);
             
-            // 查找并更新 UI
-            const nameNode = find('MainMenuUI/PlayerInfo/NameLabel', this.node);
-            const levelNode = find('MainMenuUI/PlayerInfo/LevelLabel', this.node);
+            const nameNode = find('MainMenuUI/PlayerInfo/NameLabel');
+            const levelNode = find('MainMenuUI/PlayerInfo/LevelLabel');
             
             if (nameNode) {
                 const label = nameNode.getComponent(Label);
                 if (label) {
-                    label.string = playerData.name || '玩家';
+                    (label as any).string = playerData.name || '玩家';
                 }
             }
             
             if (levelNode) {
                 const label = levelNode.getComponent(Label);
                 if (label) {
-                    label.string = `Lv.${playerData.level || 1}`;
+                    (label as any).string = `Lv.${playerData.level || 1}`;
                 }
             }
         } else {
-            console.log('[MainMenu] No player data, redirecting to login');
-            // 没有玩家数据，返回登录
-            this.gameManager?.changeState(GameState.LOGIN);
+            this.log('[MainMenu] No player data, redirecting to login');
+            this.changeGameState(GameState.LOGIN);
         }
     }
     
     /**
      * 播放背景音乐
      */
-    private playBGM(): void {
-        if (this.audioController) {
-            this.audioController.playBGM();
-            console.log('[MainMenu] Playing BGM');
-        }
+    playBGM(): void {
+        super.playBGM();
     }
     
     /**

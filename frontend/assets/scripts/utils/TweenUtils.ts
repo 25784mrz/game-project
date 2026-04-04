@@ -3,7 +3,7 @@
  * 基于 Cocos Tween 的动画工具
  */
 
-import { tween, Tween, Vec3, Color, Node, UITransform, opacity } from 'cc';
+import { tween, Tween, Vec3, Color, Node, UITransform } from 'cc';
 
 export class TweenUtils {
     /**
@@ -40,7 +40,6 @@ export class TweenUtils {
      * 淡入
      */
     static fadeIn(node: Node, duration: number, callback?: () => void): Tween<Node> {
-        node.getComponent(UITransform);
         return tween(node)
             .to(duration, { opacity: 255 })
             .call(() => callback?.())
@@ -81,19 +80,15 @@ export class TweenUtils {
         const shakeCount = Math.floor(duration * 60);
         const shakeDuration = duration / shakeCount;
         
-        const shakeTween = tween<Node>()
-            .to(shakeDuration / 2, {
-                position: new Vec3(
-                    originalPos.x + (Math.random() - 0.5) * intensity,
-                    originalPos.y + (Math.random() - 0.5) * intensity,
-                    originalPos.z
-                )
-            })
-            .to(shakeDuration / 2, { position: originalPos });
-        
         const chain = tween(node);
         for (let i = 0; i < shakeCount; i++) {
-            chain.then(shakeTween);
+            const randomX = originalPos.x + (Math.random() - 0.5) * intensity;
+            const randomY = originalPos.y + (Math.random() - 0.5) * intensity;
+            
+            chain.to(shakeDuration / 2, {
+                position: new Vec3(randomX, randomY, originalPos.z)
+            })
+            .to(shakeDuration / 2, { position: originalPos });
         }
         
         return chain.call(() => callback?.()).start();
@@ -129,12 +124,12 @@ export class TweenUtils {
     }>, callback?: () => void): Tween<Node> {
         if (actions.length === 0) {
             callback?.();
-            return tween();
+            return tween(new Node());
         }
         
         const firstAction = actions[0];
         const target = firstAction.target;
-        if (!target) return tween();
+        if (!target) return tween(new Node());
         
         let t: Tween<Node>;
         
@@ -206,13 +201,13 @@ export class TweenUtils {
      */
     static progressBar(node: Node, fromWidth: number, toWidth: number, duration: number, callback?: () => void): Tween<Node> {
         const uiTransform = node.getComponent(UITransform);
-        if (!uiTransform) return tween();
+        if (!uiTransform) return tween(new Node());
         
         return tween(node)
             .to(duration, {}, {
                 onUpdate: (ratio: number) => {
                     const currentWidth = fromWidth + (toWidth - fromWidth) * ratio;
-                    uiTransform.setContentSize(currentWidth, uiTransform.height);
+                    (uiTransform as any).setContentSize(currentWidth, (uiTransform as any).height);
                 }
             })
             .call(() => callback?.())

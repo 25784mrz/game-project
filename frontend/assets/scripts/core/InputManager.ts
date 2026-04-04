@@ -3,7 +3,7 @@
  * 统一处理键盘、触摸、鼠标输入
  */
 
-import { _decorator, Component, Node, input, Input, EventKeyboard, EventTouch, EventMouse, KeyCode, Vec2, Vec3 } from 'cc';
+import { _decorator, Component, Node, input, Input, EventKeyboard, EventTouch, EventMouse, KeyCode, Vec2, Vec3, game } from 'cc';
 import { EventSystem } from '../core/EventSystem';
 
 const { ccclass, property } = _decorator;
@@ -28,7 +28,7 @@ interface TouchPosition {
 
 @ccclass('InputManager')
 export class InputManager extends Component {
-    private static instance: InputManager;
+    private static instance: InputManager | null = null;
     
     @property
     keyRepeatDelay: number = 0.1;
@@ -64,7 +64,7 @@ export class InputManager extends Component {
     static getInstance(): InputManager {
         if (!InputManager.instance) {
             const node = new Node('InputManager');
-            InputManager.instance = node.addComponent(InputManager);
+            InputManager.instance = node.addComponent(InputManager) as InputManager;
             game.addPersistRootNode(node);
         }
         return InputManager.instance;

@@ -3,7 +3,7 @@
  * UI 界面管理、多分辨率适配、界面切换
  */
 
-import { _decorator, Component, Node, Canvas, Widget, Camera, find, UITransform, Vec3 } from 'cc';
+import { _decorator, Component, Node, Canvas, Widget, Camera, find, UITransform, Vec3, game } from 'cc';
 import { EventSystem } from './EventSystem';
 
 const { ccclass, property } = _decorator;
@@ -16,7 +16,7 @@ interface UIConfig {
 
 @ccclass('UIManager')
 export class UIManager extends Component {
-    private static instance: UIManager;
+    private static instance: UIManager | null = null;
     
     @property
     designResolution: { width: number; height: number } = { width: 1920, height: 1080 };
@@ -42,11 +42,12 @@ export class UIManager extends Component {
     
     static getInstance(): UIManager {
         if (!UIManager.instance) {
-            const node = new Node('UIManager');
-            UIManager.instance = node.addComponent(UIManager);
+            const node = new Node();
+            node.name = 'UIManager';
+            UIManager.instance = node.addComponent(UIManager) as UIManager;
             game.addPersistRootNode(node);
         }
-        return UIManager.instance;
+        return UIManager.instance!;
     }
     
     onLoad() {
@@ -73,20 +74,21 @@ export class UIManager extends Component {
         let canvasNode = find('Canvas');
         
         if (!canvasNode) {
-            canvasNode = new Node('Canvas');
-            this.canvas = canvasNode.addComponent(Canvas);
+            canvasNode = new Node();
+            canvasNode.name = 'Canvas';
+            this.canvas = canvasNode.addComponent(Canvas) as Canvas;
             game.addPersistRootNode(canvasNode);
         } else {
-            this.canvas = canvasNode.getComponent(Canvas);
+            this.canvas = canvasNode.getComponent(Canvas) as Canvas;
         }
         
         if (this.canvas) {
             // 设置设计分辨率
             const cameraNode = find('Canvas/Main Camera');
             if (cameraNode) {
-                const camera = cameraNode.getComponent(Camera);
+                const camera = cameraNode.getComponent(Camera) as Camera;
                 if (camera) {
-                    camera.priority = 0;
+                    (camera as any).priority = 0;
                 }
             }
         }
@@ -108,11 +110,12 @@ export class UIManager extends Component {
         ];
         
         layers.forEach(({ name, priority }) => {
-            const layerNode = new Node(name);
-            layerNode.parent = this.canvas.node;
+            const layerNode = new Node();
+            layerNode.name = name;
+            layerNode.parent = this.canvas!.node;
             
-            const uiTransform = layerNode.addComponent(UITransform);
-            uiTransform.setContentSize(this.designResolution.width, this.designResolution.height);
+            const uiTransform = layerNode.addComponent(UITransform) as UITransform;
+            (uiTransform as any).setContentSize(this.designResolution.width, this.designResolution.height);
             
             this.uiLayers.set(priority, layerNode);
         });

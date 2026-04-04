@@ -3,7 +3,7 @@
  * 异步加载资源 + 引用计数 + 自动释放
  */
 
-import { _decorator, Component, AssetManager, ImageAsset, SpriteFrame, AudioClip, Prefab, Node, resources } from 'cc';
+import { _decorator, Component, AssetManager, ImageAsset, SpriteFrame, AudioClip, Prefab, Node, resources, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 interface ResourceRef {

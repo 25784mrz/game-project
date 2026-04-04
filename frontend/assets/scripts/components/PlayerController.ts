@@ -3,10 +3,8 @@
  * 玩家角色移动、动画、状态管理
  */
 
-import { _decorator, Component, Node, Vec3, Quat, Animation, SkeletalAnimation } from 'cc';
-import { InputManager } from '../core/InputManager';
-import { EventSystem } from '../core/EventSystem';
-import { AudioController } from '../components/AudioController';
+import { _decorator, Component, Node, Vec3, Animation } from 'cc';
+import { BaseController } from '../core/BaseController';
 
 const { ccclass, property } = _decorator;
 
@@ -21,7 +19,7 @@ enum PlayerState {
 }
 
 @ccclass('PlayerController')
-export class PlayerController extends Component {
+export class PlayerController extends BaseController {
     @property
     moveSpeed: number = 5;
     
@@ -46,10 +44,6 @@ export class PlayerController extends Component {
     @property(Animation)
     animation: Animation | null = null;
     
-    private inputManager: InputManager | null = null;
-    private eventSystem: EventSystem | null = null;
-    private audioController: AudioController | null = null;
-    
     private velocity: Vec3 = new Vec3(0, 0, 0);
     private isGrounded: boolean = true;
     private currentState: PlayerState = PlayerState.IDLE;
@@ -67,15 +61,11 @@ export class PlayerController extends Component {
     private readonly ANIM_DEAD = 'dead';
     
     start() {
-        this.inputManager = InputManager.getInstance();
-        this.eventSystem = EventSystem.getInstance();
-        this.audioController = AudioController.getInstance();
-        
         this.currentHealth = this.maxHealth;
         this.registerEvents();
         this.playAnimation(this.ANIM_IDLE);
         
-        console.log('[PlayerController] Started');
+        this.log('[PlayerController] Started');
     }
     
     update(deltaTime: number) {
@@ -101,15 +91,15 @@ export class PlayerController extends Component {
      * 注册事件
      */
     private registerEvents(): void {
-        this.eventSystem?.on('input:jump', this.onJumpInput, this);
-        this.eventSystem?.on('input:attack', this.onAttackInput, this);
+        this.on('input:jump', this.onJumpInput, this);
+        this.on('input:attack', this.onAttackInput, this);
     }
     
     /**
      * 处理移动
      */
     private handleMovement(deltaTime: number): void {
-        const direction = this.inputManager?.getMoveDirection() || new Vec3(0, 0, 0);
+        const direction = this.getMoveDirection() || new Vec3(0, 0, 0);
         
         if (direction.length() > 0.1) {
             // 移动
@@ -205,10 +195,10 @@ export class PlayerController extends Component {
         this.isGrounded = false;
         this.setState(PlayerState.JUMP);
         
-        this.audioController?.playSFX(null!); // TODO: 添加跳跃音效
-        this.eventSystem?.emit('player:jump');
+        this.playSFX(null!);
+        this.emit('player:jump');
         
-        console.log('[PlayerController] Jump!');
+        this.log('[PlayerController] Jump!');
     }
     
     /**
@@ -222,8 +212,8 @@ export class PlayerController extends Component {
             this.setState(PlayerState.IDLE);
         }
         
-        this.audioController?.playSFX(null!); // TODO: 添加落地音效
-        this.eventSystem?.emit('player:land');
+        this.playSFX(null!);
+        this.emit('player:land');
     }
     
     /**
@@ -233,17 +223,17 @@ export class PlayerController extends Component {
         this.setState(PlayerState.ATTACK);
         this.playAnimation(this.ANIM_ATTACK);
         
-        this.audioController?.playSFX(null!); // TODO: 添加攻击音效
+        this.playSFX(null!);
         
         // 攻击检测（简单示例）
         setTimeout(() => {
-            this.eventSystem?.emit('player:attack', {
+            this.emit('player:attack', {
                 position: this.node.position,
                 damage: this.attackDamage
             });
         }, 200);
         
-        console.log('[PlayerController] Attack!');
+        this.log('[PlayerController] Attack!');
     }
     
     /**
@@ -256,10 +246,10 @@ export class PlayerController extends Component {
         this.setState(PlayerState.HIT);
         this.playAnimation(this.ANIM_HIT);
         
-        this.audioController?.playSFX(null!); // TODO: 添加受击音效
-        this.eventSystem?.emit('player:hit', { damage, health: this.currentHealth });
+        this.playSFX(null!);
+        this.emit('player:hit', { damage, health: this.currentHealth });
         
-        console.log(`[PlayerController] Take damage: ${damage}, HP: ${this.currentHealth}`);
+        this.log(`[PlayerController] Take damage: ${damage}, HP: ${this.currentHealth}`);
         
         if (this.currentHealth <= 0) {
             this.die();
@@ -277,10 +267,10 @@ export class PlayerController extends Component {
         this.setState(PlayerState.DEAD);
         this.playAnimation(this.ANIM_DEAD);
         
-        this.audioController?.playSFX(null!); // TODO: 添加死亡音效
-        this.eventSystem?.emit('player:dead');
+        this.playSFX(null!);
+        this.emit('player:dead');
         
-        console.log('[PlayerController] Player died');
+        this.log('[PlayerController] Player died');
     }
     
     /**
@@ -288,9 +278,9 @@ export class PlayerController extends Component {
      */
     heal(amount: number): void {
         this.currentHealth = Math.min(this.currentHealth + amount, this.maxHealth);
-        this.eventSystem?.emit('player:heal', { amount, health: this.currentHealth });
+        this.emit('player:heal', { amount, health: this.currentHealth });
         
-        console.log(`[PlayerController] Healed: ${amount}, HP: ${this.currentHealth}`);
+        this.log(`[PlayerController] Healed: ${amount}, HP: ${this.currentHealth}`);
     }
     
     /**
@@ -309,7 +299,7 @@ export class PlayerController extends Component {
             } else {
                 this.playAnimation(this.ANIM_FALL);
             }
-        } else if (this.inputManager?.isMoving()) {
+        } else if (this.getInputState()?.isMoving) {
             this.playAnimation(this.ANIM_RUN);
         } else {
             this.playAnimation(this.ANIM_IDLE);
@@ -337,8 +327,8 @@ export class PlayerController extends Component {
         const oldState = this.currentState;
         this.currentState = state;
         
-        console.log(`[PlayerController] State: ${oldState} -> ${state}`);
-        this.eventSystem?.emit('player:state-change', { old: oldState, new: state });
+        this.log(`[PlayerController] State: ${oldState} -> ${state}`);
+        this.emit('player:state-change', { old: oldState, new: state });
     }
     
     /**
@@ -382,7 +372,7 @@ export class PlayerController extends Component {
     }
     
     onDestroy(): void {
-        this.eventSystem?.off('input:jump', this.onJumpInput, this);
-        this.eventSystem?.off('input:attack', this.onAttackInput, this);
+        this.off('input:jump', this.onJumpInput, this);
+        this.off('input:attack', this.onAttackInput, this);
     }
 }

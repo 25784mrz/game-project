@@ -3,7 +3,7 @@
  * 负责场景加载、切换、预加载
  */
 
-import { _decorator, Component, Node, director, Scene, AssetManager, ProgressBar } from 'cc';
+import { _decorator, Component, Node, director, Scene, AssetManager, ProgressBar, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 interface SceneConfig {
@@ -122,12 +122,10 @@ export class SceneManager extends Component {
         
         console.log(`[SceneManager] Switching to: ${sceneName}`);
         
-        director.loadScene(sceneConfig.path, (err: Error | null, scene: Scene) => {
-            if (err) {
-                console.error(`[SceneManager] Load failed: ${sceneName}`, err);
-                return;
-            }
-            director.runScene(scene);
+        director.loadScene(sceneConfig.path).then(() => {
+            console.log(`[SceneManager] Loaded: ${sceneName}`);
+        }).catch((err: Error) => {
+            console.error(`[SceneManager] Load failed: ${sceneName}`, err);
         });
     }
     
@@ -158,16 +156,7 @@ export class SceneManager extends Component {
             return Promise.reject(new Error(`Scene not found: ${sceneName}`));
         }
         
-        return new Promise((resolve, reject) => {
-            director.loadScene(sceneConfig.path, (err: Error | null, scene: Scene) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    director.runScene(scene);
-                    resolve();
-                }
-            }, onProgress);
-        });
+        return director.loadScene(sceneConfig.path);
     }
     
     /**

@@ -3,7 +3,7 @@
  * 管理背景音乐、音效播放
  */
 
-import { _decorator, Component, Node, AudioClip, AudioSource, assetManager, resources } from 'cc';
+import { _decorator, Component, Node, AudioClip, AudioSource, assetManager, resources, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('AudioController')
@@ -32,32 +32,36 @@ export class AudioController extends Component {
     static getInstance(): AudioController {
         if (!AudioController.instance) {
             const node = new Node('AudioController');
-            AudioController.instance = node.addComponent(AudioController);
+            AudioController.instance = node.addComponent(AudioController) as AudioController;
             game.addPersistRootNode(node);
         }
         return AudioController.instance;
     }
-    
+
     onLoad() {
         if (AudioController.instance && AudioController.instance !== this) {
             this.node.destroy();
             return;
         }
         AudioController.instance = this;
-        
+
         // 初始化 BGM 音源
-        this.bgmSource = this.node.addComponent(AudioSource);
-        this.bgmSource.loop = true;
-        this.bgmSource.volume = this.bgmVolume;
-        
-        if (this.bgmClip) {
-            this.bgmSource.clip = this.bgmClip;
+        this.bgmSource = this.node.addComponent(AudioSource) as AudioSource;
+        if (this.bgmSource) {
+            this.bgmSource.loop = true;
+            this.bgmSource.volume = this.bgmVolume;
+
+            if (this.bgmClip) {
+                this.bgmSource.clip = this.bgmClip;
+            }
         }
-        
+
         // 初始化音效池
         for (let i = 0; i < this.maxAudioSources; i++) {
-            const source = this.node.addComponent(AudioSource);
-            source.volume = this.sfxVolume;
+            const source = this.node.addComponent(AudioSource) as AudioSource;
+            if (source) {
+                source.volume = this.sfxVolume;
+            }
             this.sfxPool.push(source);
         }
         

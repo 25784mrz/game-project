@@ -3,7 +3,7 @@
  * 全局事件总线，模块间松耦合通信
  */
 
-import { _decorator, Component, Node, EventTarget } from 'cc';
+import { _decorator, Component, Node, EventTarget, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 type EventCallback = (...args: any[]) => void;
@@ -88,7 +88,8 @@ export class EventSystem extends Component {
     async emitAsync(type: string, ...args: any[]): Promise<any[]> {
         return new Promise((resolve) => {
             const results: any[] = [];
-            const callbacks = this.eventTarget['map']?.get(type) || [];
+            const eventMap = (this.eventTarget as any)['map'];
+            const callbacks = eventMap?.get(type) || [];
             
             for (const callback of callbacks) {
                 try {
@@ -111,7 +112,7 @@ export class EventSystem extends Component {
      * 清除所有事件
      */
     clear(): void {
-        this.eventTarget.off();
+        (this.eventTarget as any).off();
         this.eventHistory = [];
         console.log('[EventSystem] All events cleared');
     }
@@ -120,7 +121,8 @@ export class EventSystem extends Component {
      * 获取事件监听器数量
      */
     getListenerCount(type: string): number {
-        return this.eventTarget['map']?.get(type)?.length || 0;
+        const eventMap = (this.eventTarget as any)['map'];
+        return eventMap?.get(type)?.length || 0;
     }
     
     /**

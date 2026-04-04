@@ -3,7 +3,7 @@
  * 管理游戏生命周期、状态切换、全局配置
  */
 
-import { _decorator, Component, Node, game, Game } from 'cc';
+import { _decorator, Component, Node, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 export enum GameState {

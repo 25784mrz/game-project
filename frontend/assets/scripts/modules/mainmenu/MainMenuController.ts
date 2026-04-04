@@ -2,14 +2,15 @@
  * 认证模块 - 主菜单场景控制器
  */
 
-import { _decorator, Component, Node, Label, Button, UITransform, EventTouch } from 'cc';
-import { GameManager, GameState } from '../core/GameManager';
-import { AudioController } from '../components/AudioController';
+import { _decorator, Component, Node, Label, Button } from 'cc';
+import { BaseController } from '../../core/BaseController';
+import { GameState } from '../../core/GameManager';
+import { AudioController } from '../../components/AudioController';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('MainMenuController')
-export class MainMenuController extends Component {
+export class MainMenuController extends BaseController {
     @property(Node)
     playButton: Node | null = null;
     
@@ -28,20 +29,18 @@ export class MainMenuController extends Component {
     @property(Label)
     playerLevelLabel: Label | null = null;
     
-    private gameManager: GameManager | null = null;
-    private audioController: AudioController | null = null;
-    
     start() {
-        this.gameManager = GameManager.getInstance();
-        this.audioController = AudioController.getInstance();
-        
+        super.start();
+    }
+    
+    protected onControllerStart(): void {
         this.bindEvents();
         this.updatePlayerInfo();
         
         // 播放主菜单 BGM
-        this.audioController?.playBGM();
+        this.playBGM();
         
-        console.log('[MainMenu] Started');
+        this.log('[MainMenu] Started');
     }
     
     /**
@@ -69,14 +68,14 @@ export class MainMenuController extends Component {
      * 更新玩家信息
      */
     updatePlayerInfo(): void {
-        const playerData = this.gameManager?.getGameData('player');
+        const playerData = this.getGameData('player');
         
         if (this.playerNameLabel && playerData?.name) {
-            this.playerNameLabel.string = playerData.name;
+            (this.playerNameLabel as any).string = playerData.name;
         }
         
         if (this.playerLevelLabel && playerData?.level) {
-            this.playerLevelLabel.string = `Lv.${playerData.level}`;
+            (this.playerLevelLabel as any).string = `Lv.${playerData.level}`;
         }
     }
     
@@ -84,12 +83,12 @@ export class MainMenuController extends Component {
      * 开始游戏按钮点击
      */
     onPlayClick(): void {
-        console.log('[MainMenu] Play button clicked');
+        this.log('[MainMenu] Play button clicked');
         
-        this.audioController?.playClick();
+        this.playClick();
         
         // 切换到游戏场景
-        this.gameManager?.changeState(GameState.GAME);
+        this.changeGameState(GameState.GAME);
         
         // TODO: 加载游戏场景
         // SceneManager.getInstance().loadScene('game');
@@ -99,8 +98,8 @@ export class MainMenuController extends Component {
      * 设置按钮点击
      */
     onSettingsClick(): void {
-        console.log('[MainMenu] Settings button clicked');
-        this.audioController?.playClick();
+        this.log('[MainMenu] Settings button clicked');
+        this.playClick();
         
         // TODO: 打开设置面板
     }
@@ -109,8 +108,8 @@ export class MainMenuController extends Component {
      * 商店按钮点击
      */
     onShopClick(): void {
-        console.log('[MainMenu] Shop button clicked');
-        this.audioController?.playClick();
+        this.log('[MainMenu] Shop button clicked');
+        this.playClick();
         
         // TODO: 打开商店面板
     }
@@ -119,31 +118,31 @@ export class MainMenuController extends Component {
      * 登出按钮点击
      */
     onLogoutClick(): void {
-        console.log('[MainMenu] Logout button clicked');
-        this.audioController?.playClick();
+        this.log('[MainMenu] Logout button clicked');
+        this.playClick();
         
         // 清除玩家数据
-        this.gameManager?.clearGameData('player');
+        this.clearGameData('player');
         
         // 返回登录场景
-        this.gameManager?.changeState(GameState.LOGIN);
+        this.changeGameState(GameState.LOGIN);
         
         // TODO: 加载登录场景
         // SceneManager.getInstance().loadScene('auth');
     }
     
-    onDestroy(): void {
-        if (this.playButton) {
-            this.playButton.off(Button.EventType.CLICK, this.onPlayClick, this);
+    protected cleanup(): void {
+        if (this.isValidNode(this.playButton)) {
+            (this.playButton as Node).off('click', this.onPlayClick, this);
         }
-        if (this.settingsButton) {
-            this.settingsButton.off(Button.EventType.CLICK, this.onSettingsClick, this);
+        if (this.isValidNode(this.settingsButton)) {
+            (this.settingsButton as Node).off('click', this.onSettingsClick, this);
         }
-        if (this.shopButton) {
-            this.shopButton.off(Button.EventType.CLICK, this.onShopClick, this);
+        if (this.isValidNode(this.shopButton)) {
+            (this.shopButton as Node).off('click', this.onShopClick, this);
         }
-        if (this.logoutButton) {
-            this.logoutButton.off(Button.EventType.CLICK, this.onLogoutClick, this);
+        if (this.isValidNode(this.logoutButton)) {
+            (this.logoutButton as Node).off('click', this.onLogoutClick, this);
         }
     }
 }

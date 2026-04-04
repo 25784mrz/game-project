@@ -25,25 +25,27 @@
   "startScene": "db://assets/scenes/boot.scene",
   "platform": {
     "web": {
-      "orientation": "auto",
+      "orientation": "portrait",
       "resolution": {
-        "policy": "show_all"
+        "policy": "fixed_height",
+        "width": 720,
+        "height": 1280
       }
     },
     "android": {
-      "orientation": "landscape",
+      "orientation": "portrait",
       "packageName": "com.example.gameproject",
       "apiLevel": 21,
       "appBundle": false
     },
     "ios": {
-      "orientation": "landscape",
+      "orientation": "portrait",
       "bundleId": "com.example.gameproject",
       "targetVersion": "11.0"
     },
     "wechatgame": {
       "appid": "",
-      "orientation": "landscape",
+      "orientation": "portrait",
       "separateEngine": false
     }
   },
@@ -79,10 +81,30 @@
   "physics": {
     "gravity": {
       "x": 0,
-      "y": -20,
-      "z": 0
+      "y": -20
     },
     "allowSleep": true,
-    "sleepThreshold": 0.1
-  }
+    "sleepThreshold": 0.1,
+    "fixedTimeStep": 0.016666666666666666,
+    "maxSubSteps": 3,
+    "iterations": 10
+  },
+  "renderPipeline": "",
+  "macroConfig": {
+    "macroList": [
+      {
+        "name": "ENABLE_TILEMAP",
+        "value": true
+      },
+      {
+        "name": "ENABLE_WEBGL",
+        "value": true
+      },
+      {
+        "name": "ENABLE_ANTIALIASING",
+        "value": true
+      }
+    ]
+  },
+  "customJointTextureLayout": null
 }

@@ -3,14 +3,13 @@
  */
 
 import { _decorator, Component, Node, Label, EditBox, Button } from 'cc';
-import { GameManager, GameState } from '../../core/GameManager';
-import { NetworkManager } from '../../core/NetworkManager';
-import { AudioController } from '../../components/AudioController';
+import { BaseController } from '../../core/BaseController';
+import { GameState } from '../../core/GameManager';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('AuthController')
-export class AuthController extends Component {
+export class AuthController extends BaseController {
     @property(EditBox)
     usernameInput: EditBox | null = null;
     
@@ -29,21 +28,13 @@ export class AuthController extends Component {
     @property(Label)
     titleLabel: Label | null = null;
     
-    private gameManager: GameManager | null = null;
-    private network: NetworkManager | null = null;
-    private audioController: AudioController | null = null;
-    
     private isLoginMode: boolean = true;
     
     start() {
-        this.gameManager = GameManager.getInstance();
-        this.network = NetworkManager.getInstance();
-        this.audioController = AudioController.getInstance();
+        this.log('[Auth] Started');
         
         this.bindEvents();
         this.updateUI();
-        
-        console.log('[Auth] Started');
     }
     
     /**
@@ -107,29 +98,23 @@ export class AuthController extends Component {
         }
         
         try {
-            // 发送登录请求
-            const response = await this.network?.request('auth:login', { username, password });
+            const response = await this.sendRequest('auth:login', { username, password });
             
             if (response?.success) {
-                console.log('[Auth] Login successful');
+                this.log('[Auth] Login successful');
                 
-                // 保存玩家数据
-                this.gameManager?.setGameData('player', {
+                this.setGameData('player', {
                     name: response.data.username,
                     level: response.data.level || 1,
                     token: response.data.token
                 });
                 
-                // 切换到主菜单
-                this.gameManager?.changeState(GameState.MAIN_MENU);
-                
-                // TODO: 加载主菜单场景
-                // SceneManager.getInstance().loadScene('main-menu');
+                this.changeGameState(GameState.MAIN_MENU);
             } else {
                 this.showError(response?.message || '登录失败');
             }
         } catch (err) {
-            console.error('[Auth] Login error:', err);
+            this.error('[Auth] Login error:', err);
             this.showError('网络连接失败，请检查服务器');
         }
     }
@@ -160,18 +145,17 @@ export class AuthController extends Component {
         }
         
         try {
-            // 发送注册请求
-            const response = await this.network?.request('auth:register', { username, password });
+            const response = await this.sendRequest('auth:register', { username, password });
             
             if (response?.success) {
-                console.log('[Auth] Registration successful');
+                this.log('[Auth] Registration successful');
                 this.showError('注册成功，请登录');
                 this.toggleMode();
             } else {
                 this.showError(response?.message || '注册失败');
             }
         } catch (err) {
-            console.error('[Auth] Register error:', err);
+            this.error('[Auth] Register error:', err);
             this.showError('网络连接失败，请检查服务器');
         }
     }
