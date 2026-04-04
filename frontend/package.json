@@ -2,6 +2,7 @@
   "name": "game-frontend",
   "version": "1.0.0",
   "description": "游戏前端 - TypeScript MVVC 框架",
+  "type": "module",
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",

@@ -682,7 +682,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 3719584.032625,
+      "mTimestamp": 4592674.814167,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -2143,7 +2143,7 @@
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/AudioController.ts": {
       "mTimestamp": {
-        "mtime": 1775201214129.231,
+        "mtime": 1775293854592.9783,
         "uuid": "bd862291-06f5-44e2-a7dc-88501e60b1c0"
       },
       "chunkId": "bf9e267217d5ad48fa1b7fb079212db673d71166",
@@ -2159,11 +2159,11 @@
           "loc": {
             "start": {
               "line": 6,
-              "column": 93
+              "column": 99
             },
             "end": {
               "line": 6,
-              "column": 97
+              "column": 103
             }
           }
         }
@@ -2383,7 +2383,7 @@
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/InputManager.ts": {
       "mTimestamp": {
-        "mtime": 1775293593955.2268,
+        "mtime": 1775293686529.5818,
         "uuid": "11b935c9-bce1-4cc1-ae52-140142e17859"
       },
       "chunkId": "71bd39e98dcf2f632d91ef4ec069a911b64a79c7",
@@ -2519,7 +2519,7 @@
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/ResourceManager.ts": {
       "mTimestamp": {
-        "mtime": 1775201214130.3264,
+        "mtime": 1775293701873.4067,
         "uuid": "d831c51d-8380-42ce-ad70-3892ff00d5bd"
       },
       "chunkId": "5e6777698c316ff8a27fe9e3ad24bfc5d427bc2e",
@@ -2535,11 +2535,11 @@
           "loc": {
             "start": {
               "line": 6,
-              "column": 113
+              "column": 119
             },
             "end": {
               "line": 6,
-              "column": 117
+              "column": 123
             }
           }
         }
@@ -2571,7 +2571,7 @@
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/SceneManager.ts": {
       "mTimestamp": {
-        "mtime": 1775201214130.6147,
+        "mtime": 1775293802505.0525,
         "uuid": "516ad662-a1e2-4f1f-8f73-f70640f00a1f"
       },
       "chunkId": "4361fe0db2288fbe86ebba39226d2761a71abb68",
@@ -2587,11 +2587,11 @@
           "loc": {
             "start": {
               "line": 6,
-              "column": 88
+              "column": 94
             },
             "end": {
               "line": 6,
-              "column": 92
+              "column": 98
             }
           }
         }
@@ -3850,7 +3850,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/AudioController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525245.0593,
+      "mTimestamp": 1775293860650.9941,
       "chunkId": "a1e307fdd25f8d961a7b3763772782fe21a9a8a5",
       "imports": [
         {
@@ -3954,7 +3954,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/PlayerController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525299.3096,
+      "mTimestamp": 1775293860707.4102,
       "chunkId": "acf8ef0d113626dbad4211910d0b39a98f0c0e0a",
       "imports": [
         {
@@ -4058,7 +4058,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/BaseController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525287.7036,
+      "mTimestamp": 1775293860693.9426,
       "chunkId": "e340686469bc835171b4cdf80d2f6905b4a7cc26",
       "imports": [
         {
@@ -4162,7 +4162,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525258.9434,
+      "mTimestamp": 1775293860664.1025,
       "chunkId": "6f6bb9c32c2aaca32a2e1e302ce89d065b952046",
       "imports": [
         {
@@ -4266,7 +4266,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/GameManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525252.802,
+      "mTimestamp": 1775293860658.4258,
       "chunkId": "439d39bc05c28233da72a350e65ce7f2c382fc14",
       "imports": [
         {
@@ -4370,7 +4370,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/InputManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525276.989,
+      "mTimestamp": 1775293860684.3425,
       "chunkId": "262d7617334c5038ff3ed903db5de266fb186de6",
       "imports": [
         {
@@ -4474,7 +4474,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/NetworkManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525265.9302,
+      "mTimestamp": 1775293860671.9783,
       "chunkId": "d7ce43bd175218373d13a1c26b4168fb1155f8ea",
       "imports": [
         {
@@ -4578,7 +4578,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/ResourceManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525271.0688,
+      "mTimestamp": 1775293860678.173,
       "chunkId": "8a3f4f7f6a6e24cec969f7b364f75dd61944128a",
       "imports": [
         {
@@ -4682,7 +4682,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/SceneManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525302.3762,
+      "mTimestamp": 1775293860710.8936,
       "chunkId": "88a661082edaa2ea623dd28d1a12bc54dc5d101c",
       "imports": [
         {
@@ -4786,7 +4786,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/UIManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525281.5156,
+      "mTimestamp": 1775293860689.3445,
       "chunkId": "9c91b949ca77fba473b696d7096d32623ac118ba",
       "imports": [
         {
@@ -4890,7 +4890,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/auth/AuthController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525306.0308,
+      "mTimestamp": 1775293860714.3276,
       "chunkId": "19f6820c8268fdc65ed9a3cbeb07d2518463a444",
       "imports": [
         {
@@ -4994,7 +4994,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/auth/LoginUIBuilder.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525313.483,
+      "mTimestamp": 1775293860722.3337,
       "chunkId": "879fe46fb12b6d7b83a21fe098c839889d121941",
       "imports": [
         {
@@ -5098,7 +5098,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/gameplay/GameplayController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525316.4211,
+      "mTimestamp": 1775293860725.3848,
       "chunkId": "4f80642ed098d42a03d3601f4d49611f635f3109",
       "imports": [
         {
@@ -5202,7 +5202,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/GameMainMenuBuilder.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525325.7427,
+      "mTimestamp": 1775293860732.579,
       "chunkId": "558a8501923feed87e6a7cb84d2bb208bd6d34d2",
       "imports": [
         {
@@ -5306,7 +5306,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/MainMenuController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525320.9014,
+      "mTimestamp": 1775293860727.9658,
       "chunkId": "b4c88095b9f6a45ef2aa00b592b65256dfd83c43",
       "imports": [
         {
@@ -5410,7 +5410,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/BootController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525328.8286,
+      "mTimestamp": 1775293860734.6929,
       "chunkId": "e1383c5245ed4c822e5a908124059ec0ab5e04ae",
       "imports": [
         {
@@ -5514,7 +5514,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/MainMenuController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525331.4207,
+      "mTimestamp": 1775293860738.4714,
       "chunkId": "d338b39bdefff89a94105810c13f2e2a5c8f1561",
       "imports": [
         {
@@ -5618,7 +5618,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/utils/TweenUtils.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293525308.5022,
+      "mTimestamp": 1775293860716.983,
       "chunkId": "a02e8d9f0f27fef4d87e0a3bc684c6fa92cdf76e",
       "imports": [
         {
@@ -5724,7 +5724,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/AudioController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525245.0593,
+        "mtime": 1775293860650.9941,
         "uuid": "2b49c1da-d33e-468c-acfe-a6159bb587da"
       },
       "chunkId": "f5e171f718bebe15b32dff0b6185c33882f6644c"
@@ -5739,7 +5739,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/PlayerController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525299.3096,
+        "mtime": 1775293860707.4102,
         "uuid": "6a7b80ae-c0b1-4db0-b235-7a18570293fa"
       },
       "chunkId": "5a3683275da339dd3ad1d8bf4d05a232696ab53b"
@@ -5747,7 +5747,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/BaseController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525287.7036,
+        "mtime": 1775293860693.9426,
         "uuid": "5ccd7f11-7388-4564-8a79-fdcf8a8854a8"
       },
       "chunkId": "112de0e92d9614bd028effe43a43ad874cbd85e3"
@@ -5755,7 +5755,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525258.9434,
+        "mtime": 1775293860664.1025,
         "uuid": "410623ec-1407-4b86-9013-4435e4c83fee"
       },
       "chunkId": "ed0286328c1901c268b9e30f0431e257203f4416"
@@ -5763,7 +5763,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/GameManager.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525252.802,
+        "mtime": 1775293860658.4258,
         "uuid": "3a0ae23f-e557-43db-9d07-4eee6b38b52a"
       },
       "chunkId": "43d2ac3babae6fea48a639411596775d84925bf0"
@@ -5771,7 +5771,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/InputManager.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525276.989,
+        "mtime": 1775293860684.3425,
         "uuid": "6342bc3c-791b-4d29-b4cc-953e1cc88c68"
       },
       "chunkId": "1238ef92b1b4c1f7399454bb819f7b52395fe5d3"
@@ -5779,7 +5779,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/NetworkManager.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525265.9302,
+        "mtime": 1775293860671.9783,
         "uuid": "6ad7c97a-1247-4885-a0d4-b69336ba52b8"
       },
       "chunkId": "229f32225410de329c6eb05acf904a45d8ff043e"
@@ -5787,7 +5787,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/ResourceManager.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525271.0688,
+        "mtime": 1775293860678.173,
         "uuid": "ad3f53ae-370e-42b4-9a77-4b5d584d54cf"
       },
       "chunkId": "cdb017e6731d975090357ed7a86a3372da6fbc24"
@@ -5795,7 +5795,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/SceneManager.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525302.3762,
+        "mtime": 1775293860710.8936,
         "uuid": "156a2982-50e7-4b30-b61d-033a5459713c"
       },
       "chunkId": "a23ea2ef8a6424eb12daed1b47386e0892b5a27d"
@@ -5803,7 +5803,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/UIManager.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525281.5156,
+        "mtime": 1775293860689.3445,
         "uuid": "7bbe54bd-97ad-4d38-a3eb-a90c1e96556e"
       },
       "chunkId": "652e1323b9bd89ef1e2fe3eb9d4867d2c9167951"
@@ -5811,7 +5811,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/auth/AuthController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525306.0308,
+        "mtime": 1775293860714.3276,
         "uuid": "409ec4a6-7fb8-45f2-b9a9-201734bfc316"
       },
       "chunkId": "8ab753f69210d34ef66bc50722ab18035bebedb8"
@@ -5819,7 +5819,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/auth/LoginUIBuilder.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525313.483,
+        "mtime": 1775293860722.3337,
         "uuid": "052d0b24-e1c8-4a31-a0d3-fbe9cf7752f2"
       },
       "chunkId": "b363b94e5f0d23427d11e0e67c39d3eb091df6b7"
@@ -5827,7 +5827,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/gameplay/GameplayController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525316.4211,
+        "mtime": 1775293860725.3848,
         "uuid": "1e53f942-5b5e-47f8-bf72-5e953031b451"
       },
       "chunkId": "373f173989c68a15be4537e6baf6ab611ec750fb"
@@ -5835,7 +5835,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/GameMainMenuBuilder.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525325.7427,
+        "mtime": 1775293860732.579,
         "uuid": "cf621e36-fdf2-4b84-9709-52d55d6becf7"
       },
       "chunkId": "67bdaaa3926d16f610fe2eec9986f933ac1046ac"
@@ -5843,7 +5843,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/mainmenu/MainMenuController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525320.9014,
+        "mtime": 1775293860727.9658,
         "uuid": "0b4f5000-819e-42f5-be77-fe3db7ddb009"
       },
       "chunkId": "c9605931058c95ab2d6d8f5d6f850e086f2b04c3"
@@ -5851,7 +5851,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/BootController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525328.8286,
+        "mtime": 1775293860734.6929,
         "uuid": "1bc75b03-b790-46ca-a7ef-59761b68af91"
       },
       "chunkId": "77ba6019767da52a5944e451f99d627e0d66b9df"
@@ -5859,7 +5859,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/scenes/MainMenuController.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525331.4207,
+        "mtime": 1775293860738.4714,
         "uuid": "b8c43fd6-f565-47ec-8751-27865f693028"
       },
       "chunkId": "b318925160c2553bd6c74aa320b1cec7bb3312f3"
@@ -5867,7 +5867,7 @@
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/utils/TweenUtils.js": {
       "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293525308.5022,
+        "mtime": 1775293860716.983,
         "uuid": "08469ff1-a1f9-4690-a7e6-5bca5cfd2f9d"
       },
       "chunkId": "e4e486baff1329ee348cf40e149ef08fdd60c58d"
