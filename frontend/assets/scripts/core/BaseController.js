@@ -40,14 +40,14 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-import { _decorator, Component } from 'cc';
-import { GameManager } from './GameManager';
-import { EventSystem } from './EventSystem';
-import { AudioController } from '../components/AudioController';
-import { NetworkManager } from './NetworkManager';
-import { ResourceManager } from './ResourceManager';
-import { InputManager } from './InputManager';
-import { UIManager } from './UIManager';
+const { _decorator, Component } = require('cc');
+const { GameManager } = require('./GameManager');
+const { EventSystem } = require('./EventSystem');
+const { AudioController } = require('../components/AudioController');
+const { NetworkManager } = require('./NetworkManager');
+const { ResourceManager } = require('./ResourceManager');
+const { InputManager } = require('./InputManager');
+const { UIManager } = require('./UIManager');
 const { ccclass, property } = _decorator;
 let BaseController = (() => {
     let _classDecorators = [ccclass('BaseController')];
@@ -415,4 +415,4 @@ let BaseController = (() => {
     })();
     return BaseController = _classThis;
 })();
-export { BaseController };
+module.exports = { BaseController };

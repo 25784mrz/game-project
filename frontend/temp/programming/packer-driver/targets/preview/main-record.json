@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 3123.782333,
+      "mTimestamp": 4174.258083,
       "chunkId": "93ba276ea7b26ffcdc433fab14afc1ed6f05647b",
       "imports": [
         {
@@ -682,7 +682,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 4592674.814167,
+      "mTimestamp": 1850637.673166,
       "chunkId": "6d8fd2b0177941b032ddc0733af48a561fb60657",
       "imports": [
         {
@@ -2135,7 +2135,7 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1775289915241,
+      "mTimestamp": 1775530299309,
       "chunkId": "6a5019a719a9014c047e67aa1cf34453ab8392ce",
       "imports": [],
       "type": "esm",
@@ -3850,7 +3850,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/AudioController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860650.9941,
+      "mTimestamp": 1775531457267.5024,
       "chunkId": "a1e307fdd25f8d961a7b3763772782fe21a9a8a5",
       "imports": [
         {
@@ -4058,7 +4058,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/BaseController.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860693.9426,
+      "mTimestamp": 1775531103084.3076,
       "chunkId": "e340686469bc835171b4cdf80d2f6905b4a7cc26",
       "imports": [
         {
@@ -4162,7 +4162,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860664.1025,
+      "mTimestamp": 1775531319213.3525,
       "chunkId": "6f6bb9c32c2aaca32a2e1e302ce89d065b952046",
       "imports": [
         {
@@ -4266,7 +4266,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/GameManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860658.4258,
+      "mTimestamp": 1775531241216.943,
       "chunkId": "439d39bc05c28233da72a350e65ce7f2c382fc14",
       "imports": [
         {
@@ -4370,7 +4370,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/InputManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860684.3425,
+      "mTimestamp": 1775531800823.3975,
       "chunkId": "262d7617334c5038ff3ed903db5de266fb186de6",
       "imports": [
         {
@@ -4474,7 +4474,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/NetworkManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860671.9783,
+      "mTimestamp": 1775531595375.2986,
       "chunkId": "d7ce43bd175218373d13a1c26b4168fb1155f8ea",
       "imports": [
         {
@@ -4578,7 +4578,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/ResourceManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860678.173,
+      "mTimestamp": 1775531719459.7913,
       "chunkId": "8a3f4f7f6a6e24cec969f7b364f75dd61944128a",
       "imports": [
         {
@@ -4786,7 +4786,7 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/UIManager.mjs?cjs=&original=.js": {
-      "mTimestamp": 1775293860689.3445,
+      "mTimestamp": 1775531882086.191,
       "chunkId": "9c91b949ca77fba473b696d7096d32623ac118ba",
       "imports": [
         {
@@ -5722,15 +5722,60 @@
       ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/AudioController.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860650.9941,
+        "mtime": 1775531457267.5024,
         "uuid": "2b49c1da-d33e-468c-acfe-a6159bb587da"
       },
-      "chunkId": "f5e171f718bebe15b32dff0b6185c33882f6644c"
+      "chunkId": "788ddaa620179954c61c629db3443aecc4def0b3",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        }
+      ]
     },
     "cce:/internal/ml/cjs-loader.mjs": {
-      "mTimestamp": 1775289915241,
+      "mTimestamp": 1775530299309,
       "chunkId": "a0d063530de23ddade53e1a935bf64c81277c061",
       "imports": [],
       "type": "esm",
@@ -5745,52 +5790,490 @@
       "chunkId": "5a3683275da339dd3ad1d8bf4d05a232696ab53b"
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/BaseController.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860693.9426,
+        "mtime": 1775531103084.3076,
         "uuid": "5ccd7f11-7388-4564-8a79-fdcf8a8854a8"
       },
-      "chunkId": "112de0e92d9614bd028effe43a43ad874cbd85e3"
+      "chunkId": "f4e6a1096229cb5a4306dfbef4828402dc371d5c",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        },
+        {
+          "value": "./GameManager",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 37
+            },
+            "end": {
+              "line": 3,
+              "column": 52
+            }
+          }
+        },
+        {
+          "value": "./EventSystem",
+          "resolved": "__unresolved_2",
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 37
+            },
+            "end": {
+              "line": 4,
+              "column": 52
+            }
+          }
+        },
+        {
+          "value": "../components/AudioController",
+          "resolved": "__unresolved_3",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 37
+            },
+            "end": {
+              "line": 5,
+              "column": 68
+            }
+          }
+        },
+        {
+          "value": "./NetworkManager",
+          "resolved": "__unresolved_4",
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 37
+            },
+            "end": {
+              "line": 6,
+              "column": 55
+            }
+          }
+        },
+        {
+          "value": "./ResourceManager",
+          "resolved": "__unresolved_5",
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 37
+            },
+            "end": {
+              "line": 7,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "./InputManager",
+          "resolved": "__unresolved_6",
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 37
+            },
+            "end": {
+              "line": 8,
+              "column": 53
+            }
+          }
+        },
+        {
+          "value": "./UIManager",
+          "resolved": "__unresolved_7",
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 37
+            },
+            "end": {
+              "line": 9,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/GameManager.js"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.js"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/components/AudioController.js"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/NetworkManager.js"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/ResourceManager.js"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/InputManager.js"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/UIManager.js"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860664.1025,
+        "mtime": 1775531319213.3525,
         "uuid": "410623ec-1407-4b86-9013-4435e4c83fee"
       },
-      "chunkId": "ed0286328c1901c268b9e30f0431e257203f4416"
+      "chunkId": "8d2f8969622df9b0db5f77fae31d6ffabbaeab26",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/GameManager.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860658.4258,
+        "mtime": 1775531241216.943,
         "uuid": "3a0ae23f-e557-43db-9d07-4eee6b38b52a"
       },
-      "chunkId": "43d2ac3babae6fea48a639411596775d84925bf0"
+      "chunkId": "0e992da0e3fd311cb5d007c4d5096a8bd3431b9f",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/InputManager.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860684.3425,
+        "mtime": 1775531800823.3975,
         "uuid": "6342bc3c-791b-4d29-b4cc-953e1cc88c68"
       },
-      "chunkId": "1238ef92b1b4c1f7399454bb819f7b52395fe5d3"
+      "chunkId": "b062c8cb50e67374080a744882758cf05944dec1",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        },
+        {
+          "value": "./EventSystem",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 37
+            },
+            "end": {
+              "line": 3,
+              "column": 52
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.js"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/NetworkManager.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860671.9783,
+        "mtime": 1775531595375.2986,
         "uuid": "6ad7c97a-1247-4885-a0d4-b69336ba52b8"
       },
-      "chunkId": "229f32225410de329c6eb05acf904a45d8ff043e"
+      "chunkId": "a66bab0aef974a02f888b272dd00e6a2844a883b",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/ResourceManager.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860678.173,
+        "mtime": 1775531719459.7913,
         "uuid": "ad3f53ae-370e-42b4-9a77-4b5d584d54cf"
       },
-      "chunkId": "cdb017e6731d975090357ed7a86a3372da6fbc24"
+      "chunkId": "4c3fc62f36fc558f72e80cdf70269c6989bf4509",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/SceneManager.js": {
       "erroneous": true,
@@ -5801,12 +6284,78 @@
       "chunkId": "a23ea2ef8a6424eb12daed1b47386e0892b5a27d"
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/UIManager.js": {
-      "erroneous": true,
       "mTimestamp": {
-        "mtime": 1775293860689.3445,
+        "mtime": 1775531882086.191,
         "uuid": "7bbe54bd-97ad-4d38-a3eb-a90c1e96556e"
       },
-      "chunkId": "652e1323b9bd89ef1e2fe3eb9d4867d2c9167951"
+      "chunkId": "4f2d6bfb3b59bd3b71c4b926636df2c31f14936b",
+      "imports": [
+        {
+          "value": "cce:/internal/ml/cjs-loader.mjs",
+          "resolved": "__unresolved_0",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 36
+            },
+            "end": {
+              "line": 2,
+              "column": 40
+            }
+          }
+        },
+        {
+          "value": "./EventSystem",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 37
+            },
+            "end": {
+              "line": 3,
+              "column": 52
+            }
+          }
+        }
+      ],
+      "type": "commonjs",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/core/EventSystem.js"
+          },
+          "messages": []
+        }
+      ]
     },
     "file:///Users/mrz/Desktop/game-project/game-project/frontend/assets/scripts/modules/auth/AuthController.js": {
       "erroneous": true,
@@ -5871,6 +6420,13 @@
         "uuid": "08469ff1-a1f9-4690-a7e6-5bca5cfd2f9d"
       },
       "chunkId": "e4e486baff1329ee348cf40e149ef08fdd60c58d"
+    },
+    "data:text/javascript,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20export%20const%20__cjsMetaURL%20%3D%20'cc'%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20": {
+      "mTimestamp": 0,
+      "chunkId": "2bddea6e733500d554dc22e5c3bc38941c5d8648",
+      "imports": [],
+      "type": "esm",
+      "resolutions": []
     }
   }
 }

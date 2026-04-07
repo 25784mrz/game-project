@@ -40,8 +40,8 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-import { _decorator, Component, Node, Canvas, Camera, find, UITransform, game } from 'cc';
-import { EventSystem } from './EventSystem';
+const { _decorator, Component, Node, Canvas, Camera, find, UITransform, game } = require('cc');
+const { EventSystem } = require('./EventSystem');
 const { ccclass, property } = _decorator;
 let UIManager = (() => {
     let _classDecorators = [ccclass('UIManager')];
@@ -323,4 +323,4 @@ let UIManager = (() => {
     })();
     return UIManager = _classThis;
 })();
-export { UIManager };
+module.exports = { UIManager };

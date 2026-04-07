@@ -40,7 +40,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-import { _decorator, Component, ImageAsset, AudioClip, Prefab, Node, resources, game } from 'cc';
+const { _decorator, Component, ImageAsset, AudioClip, Prefab, Node, resources, game } = require('cc');
 const { ccclass, property } = _decorator;
 let ResourceManager = (() => {
     let _classDecorators = [ccclass('ResourceManager')];
@@ -285,4 +285,4 @@ let ResourceManager = (() => {
     })();
     return ResourceManager = _classThis;
 })();
-export { ResourceManager };
+module.exports = { ResourceManager };

@@ -40,8 +40,8 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-import { _decorator, Component, Node, input, Input, KeyCode, Vec2, Vec3, game } from 'cc';
-import { EventSystem } from '../core/EventSystem';
+const { _decorator, Component, Node, input, Input, KeyCode, Vec2, Vec3, game } = require('cc');
+const { EventSystem } = require('./EventSystem');
 const { ccclass, property } = _decorator;
 let InputManager = (() => {
     let _classDecorators = [ccclass('InputManager')];
@@ -446,4 +446,4 @@ let InputManager = (() => {
     })();
     return InputManager = _classThis;
 })();
-export { InputManager };
+module.exports = { InputManager };

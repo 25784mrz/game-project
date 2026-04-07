@@ -40,7 +40,7 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
     if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
     return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
 };
-import { _decorator, Component, Node, game } from 'cc';
+const { _decorator, Component, Node, game } = require('cc');
 const { ccclass, property } = _decorator;
 var ConnectionState;
 (function (ConnectionState) {
@@ -359,4 +359,4 @@ let NetworkManager = (() => {
     })();
     return NetworkManager = _classThis;
 })();
-export { NetworkManager };
+module.exports = { NetworkManager, ConnectionState };
